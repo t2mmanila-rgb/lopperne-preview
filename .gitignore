@@ -1,0 +1,7 @@
+bin/
+cloudflared
+node_modules/
+.DS_Store
+*.log
+.netlifyignore
+server.js

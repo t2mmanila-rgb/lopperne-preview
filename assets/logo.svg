@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 280" width="100%" height="100%">
+  <!-- Lopperne Minimalist Scandinavian Logo -->
+  <g fill="#111111" transform="translate(50, 20)">
+    <!-- Left Chair -->
+    <path d="M85 30 C85 20, 92 10, 96 0 L102 0 C98 12, 92 25, 92 50 L92 80 L130 80 C132 80, 134 83, 133 86 L127 102 C125 106, 122 108, 118 108 L95 108 L98 170 L91 170 L87 108 L85 108 L79 170 L72 170 L76 100 C76 80, 80 60, 85 30 Z" />
+    
+    <!-- Table -->
+    <path d="M138 48 L262 48 L262 62 L254 62 L248 170 L240 170 L245 62 L155 62 L160 170 L152 170 L146 62 L138 62 Z" />
+    
+    <!-- Right Chair -->
+    <path d="M315 30 C315 20, 308 10, 304 0 L298 0 C302 12, 308 25, 308 50 L308 80 L270 80 C268 80, 266 83, 267 86 L273 102 C275 106, 278 108, 282 108 L305 108 L302 170 L309 170 L313 108 L315 108 L321 170 L328 170 L324 100 C324 80, 320 60, 315 30 Z" />
+  </g>
+  
+  <!-- Text: LOPPERNE -->
+  <text x="250" y="215" font-family="'Montserrat', 'Helvetica Neue', Arial, sans-serif" font-size="42" font-weight="800" letter-spacing="6" fill="#111111" text-anchor="middle">LOPPERNE</text>
+  
+  <!-- Text: DANISH DESIGN FURNITURE -->
+  <text x="250" y="255" font-family="'Montserrat', 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="500" letter-spacing="11" fill="#222222" text-anchor="middle">DANISH DESIGN FURNITURE</text>
+</svg>
