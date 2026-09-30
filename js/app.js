@@ -65,10 +65,10 @@ function renderFurnitureGrid() {
 
     const angles = furniture.images.angles && furniture.images.angles.length > 0 
       ? furniture.images.angles 
-      : [{ id: 'forfra', name: 'Forfra', image: furniture.images.main }];
+      : [];
 
-    let currentAngleIndex = 0;
-    const initialImg = angles[0].image;
+    let currentAngleIndex = -1; // -1 represents the Main image
+    const initialImg = furniture.images.main;
 
     card.innerHTML = `
       <div class="card-media-wrapper">
@@ -103,10 +103,10 @@ function renderFurnitureGrid() {
           </div>
         </div>
 
-        <!-- 3 Distinct Angle Sub-thumbnails -->
+        <!-- 3 Distinct Angle Sub-thumbnails below Main -->
         <div class="angle-sub-thumbnails" aria-label="Vælg vinkel">
           ${angles.map((angle, idx) => `
-            <div class="angle-thumb-item ${idx === 0 ? 'active' : ''}" 
+            <div class="angle-thumb-item" 
                  data-angle-idx="${idx}"
                  title="Se ${angle.name}">
               <img src="${angle.image}" alt="${angle.name}" loading="lazy" onerror="this.onerror=null;this.src='${furniture.images.main}'">
@@ -152,8 +152,22 @@ function renderFurnitureGrid() {
     const thumbs = card.querySelectorAll('.angle-thumb-item');
 
     thumbs.forEach(thumb => {
-      const switchAngle = () => {
+      const switchAngle = (e) => {
+        e.stopPropagation();
         const idx = parseInt(thumb.getAttribute('data-angle-idx'), 10);
+        
+        if (thumb.classList.contains('active')) {
+          // Toggle back to Main
+          thumbs.forEach(t => t.classList.remove('active'));
+          currentAngleIndex = -1;
+          mainImg.style.opacity = '0.3';
+          setTimeout(() => {
+            mainImg.src = furniture.images.main;
+            mainImg.style.opacity = '1';
+          }, 120);
+          return;
+        }
+
         currentAngleIndex = idx;
         const targetAngle = angles[idx];
 
@@ -437,9 +451,16 @@ function openLightbox(furnitureId, initialAngleIndex = 0) {
   const prov = document.getElementById('lightbox-provenance');
   const anglesContainer = document.getElementById('lightbox-angle-btns');
 
-  const angles = item.images.angles && item.images.angles.length > 0 
-    ? item.images.angles 
-    : [{ id: 'forfra', name: 'Forfra', image: item.images.main }];
+  // Include Main as the primary view plus all 3 angles
+  const allViews = [
+    { id: 'main', name: 'Main', image: item.images.main },
+    ...(item.images.angles || [])
+  ];
+
+  let selectedIdx = 0;
+  if (initialAngleIndex >= 0 && initialAngleIndex < (item.images.angles || []).length) {
+    selectedIdx = initialAngleIndex + 1; // +1 because Main is at index 0
+  }
 
   if (title) title.textContent = item.name;
   if (designer) designer.textContent = `${item.designer} • ${item.year} (${item.producer})`;
@@ -450,27 +471,28 @@ function openLightbox(furnitureId, initialAngleIndex = 0) {
   if (frame) frame.textContent = item.frame;
   if (prov) prov.textContent = item.provenance;
 
-  const initialAngle = angles[initialAngleIndex] || angles[0];
+  const currentView = allViews[selectedIdx] || allViews[0];
   if (mainImg) {
-    mainImg.src = initialAngle.image;
-    mainImg.alt = `${item.name} - ${initialAngle.name}`;
+    mainImg.src = currentView.image;
+    mainImg.alt = `${item.name} - ${currentView.name}`;
   }
 
   // Populate angle buttons
   if (anglesContainer) {
     anglesContainer.innerHTML = '';
-    angles.forEach((angle, idx) => {
+    allViews.forEach((viewObj, idx) => {
       const btn = document.createElement('button');
       btn.type = 'button';
-      btn.className = `btn-lightbox-angle ${idx === initialAngleIndex ? 'active' : ''}`;
-      btn.textContent = angle.name;
+      btn.className = `btn-lightbox-angle ${idx === selectedIdx ? 'active' : ''}`;
+      btn.textContent = viewObj.name;
       btn.addEventListener('click', () => {
         anglesContainer.querySelectorAll('.btn-lightbox-angle').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         if (mainImg) {
           mainImg.style.opacity = '0.3';
           setTimeout(() => {
-            mainImg.src = angle.image;
+            mainImg.src = viewObj.image;
+            mainImg.alt = `${item.name} - ${viewObj.name}`;
             mainImg.style.opacity = '1';
           }, 120);
         }
