@@ -1519,12 +1519,34 @@ button {
   border: 1px solid var(--color-border);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
   background-color: var(--color-white);
-  padding: 16px;
+  padding: 36px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
 }
 
-.showroom-business-card-wrap img {
+.showroom-business-card-wrap .showroom-logo-img {
   width: 100%;
-  border: 1px solid #eeeeee;
+  max-width: 400px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.about-card-wrap {
+  border: 1px solid var(--color-border);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.07);
+  background-color: var(--color-white);
+  padding: 16px;
+  border-radius: var(--radius-sm);
+}
+
+.about-business-card-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid #f2f2f2;
 }
 
 .about-section {
