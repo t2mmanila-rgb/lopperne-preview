@@ -1670,9 +1670,9 @@ button {
 }
 
 .footer-logo-img {
-  filter: invert(1) brightness(2);
   height: 156px;
   width: auto;
+  object-fit: contain;
   align-self: flex-start;
 }
 
