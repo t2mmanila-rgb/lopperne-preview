@@ -1,5 +1,5 @@
 /**
- * Lopperne - Danish Design Furniture
+ * Lopperne - Skandinavisk Design
  * Main Application Script
  */
 
@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
   initFilters();
   initContactModals();
+  initLightbox();
 });
 
 // State
@@ -42,13 +43,13 @@ function renderFurnitureGrid() {
   });
 
   const countBadge = document.getElementById('catalog-count');
-  if (countBadge) countBadge.textContent = `${filtered.length} møbler fundet`;
+  if (countBadge) countBadge.textContent = `${filtered.length} varer fundet`;
 
   if (filtered.length === 0) {
     container.innerHTML = `
       <div class="empty-catalog-message">
-        <h3>Ingen møbler matchede dine søgekriterier</h3>
-        <p>Prøv at nulstille dine filtre eller søge efter en anden designer eller møbeltype.</p>
+        <h3>Ingen varer matchede dine søgekriterier</h3>
+        <p>Prøv at nulstille dine filtre eller søge efter en anden designer eller kategori.</p>
         <button type="button" class="btn-secondary" onclick="resetFilters()">Nulstil filtre</button>
       </div>
     `;
@@ -62,50 +63,54 @@ function renderFurnitureGrid() {
     card.className = 'furniture-card';
     card.setAttribute('data-id', furniture.id);
 
-    // Default to first upholstery variant
-    let selectedUpholsteryIndex = 0;
-    const currentUph = furniture.images.upholstery[selectedUpholsteryIndex];
+    const angles = furniture.images.angles && furniture.images.angles.length > 0 
+      ? furniture.images.angles 
+      : [{ id: 'forfra', name: 'Forfra', image: furniture.images.main }];
+
+    let currentAngleIndex = 0;
+    const initialImg = angles[0].image;
 
     card.innerHTML = `
       <div class="card-media-wrapper">
         <div class="card-badges-header">
           <span class="card-badge">${furniture.status}</span>
-          <button type="button" class="card-360-badge" title="Klik for at se i 360° rotation">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+          <span class="card-zoom-badge" title="Klik på billedet for fuld skærm">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="11" y1="8" x2="11" y2="14"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
             </svg>
-            <span>360° Rotation</span>
-          </button>
+            <span>Se Billeder</span>
+          </span>
         </div>
 
-        <!-- Main Clickable Image -> Opens 360 overlay window -->
-        <div class="main-image-container" title="Klik for at åbne interaktiv 360° visning">
-          <img src="${currentUph.image}" 
+        <!-- Main Clickable Image -> Opens Lightbox modal -->
+        <div class="main-image-container" title="Klik for at se i stort format">
+          <img src="${initialImg}" 
                alt="${furniture.name} - ${furniture.designer}" 
                class="furniture-main-img" 
                loading="lazy"
                onerror="this.onerror=null;this.src='${furniture.images.main}'">
           <div class="image-overlay-prompt">
             <span class="view-360-hint">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M12 8v8M8 12h8"></path>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               </svg>
-              Klik for 360° visning
+              Klik for stort foto
             </span>
           </div>
         </div>
 
-        <!-- 3 Distinct Upholstery Sub-images -->
-        <div class="upholstery-sub-thumbnails" aria-label="Vælg polstring">
-          ${furniture.images.upholstery.map((uph, idx) => `
-            <div class="sub-thumb-item ${idx === 0 ? 'active' : ''}" 
-                 data-uph-id="${uph.id}" 
-                 data-uph-idx="${idx}"
-                 title="${uph.name}: ${uph.material}">
-              <img src="${uph.image}" alt="${uph.name}" loading="lazy" onerror="this.onerror=null;this.src='${furniture.images.main}'">
-              <span class="sub-thumb-indicator" style="background-color: ${uph.swatch};"></span>
-              <span class="sub-thumb-label">${uph.name}</span>
+        <!-- 3 Distinct Angle Sub-thumbnails -->
+        <div class="angle-sub-thumbnails" aria-label="Vælg vinkel">
+          ${angles.map((angle, idx) => `
+            <div class="angle-thumb-item ${idx === 0 ? 'active' : ''}" 
+                 data-angle-idx="${idx}"
+                 title="Se ${angle.name}">
+              <img src="${angle.image}" alt="${angle.name}" loading="lazy" onerror="this.onerror=null;this.src='${furniture.images.main}'">
+              <span class="angle-thumb-label">${angle.name}</span>
             </div>
           `).join('')}
         </div>
@@ -119,82 +124,59 @@ function renderFurnitureGrid() {
         <h3 class="card-title">${furniture.name}</h3>
         <p class="card-model">${furniture.model} • ${furniture.producer}</p>
         
-        <div class="card-active-upholstery">
-          <span class="uph-label-prefix">Valgt polstring:</span>
-          <strong class="card-uph-name">${currentUph.name}</strong>
-        </div>
-
-        <div class="card-valuation-row">
-          <div class="val-box before">
-            <span class="val-label">Værdi før renovering</span>
-            <span class="val-amount">${furniture.valuationBefore}</span>
-          </div>
-          <div class="val-arrow">&rarr;</div>
-          <div class="val-box after">
-            <span class="val-label">Værdi efter renovering</span>
-            <span class="val-amount">${furniture.valuationAfter}</span>
-          </div>
-        </div>
+        <p class="card-short-desc">${furniture.shortDesc || ''}</p>
 
         <div class="card-pricing">
           <div class="price-wrap">
             <span class="price-prefix">Pris hos Lopperne</span>
             <span class="card-price">${furniture.price}</span>
           </div>
-          <button type="button" class="btn-card-inquire" title="Reserver eller forespørg">
+          <button type="button" class="btn-card-inquire" title="Reserver eller forespørg på dette møbel">
             Forespørgsel
           </button>
         </div>
       </div>
     `;
 
-    // Wire main image click to open 360 viewer overlay window
+    // Wire main image and badge click to open Lightbox
     const mainImgWrap = card.querySelector('.main-image-container');
-    const badge360 = card.querySelector('.card-360-badge');
-    const open360 = () => {
-      const activeUphItem = furniture.images.upholstery[selectedUpholsteryIndex];
-      if (window.furnitureViewer360) {
-        window.furnitureViewer360.open(furniture.id, activeUphItem.id);
-      }
+    const zoomBadge = card.querySelector('.card-zoom-badge');
+    const openItemLightbox = () => {
+      openLightbox(furniture.id, currentAngleIndex);
     };
-    mainImgWrap.addEventListener('click', open360);
-    badge360.addEventListener('click', open360);
+    if (mainImgWrap) mainImgWrap.addEventListener('click', openItemLightbox);
+    if (zoomBadge) zoomBadge.addEventListener('click', openItemLightbox);
 
-    // Wire 3 sub-thumbnails to switch the main image and active upholstery
+    // Wire angle thumbnails to switch the main image
     const mainImg = card.querySelector('.furniture-main-img');
-    const uphNameEl = card.querySelector('.card-uph-name');
-    const thumbs = card.querySelectorAll('.sub-thumb-item');
+    const thumbs = card.querySelectorAll('.angle-thumb-item');
 
     thumbs.forEach(thumb => {
-      const switchUph = () => {
-        const idx = parseInt(thumb.getAttribute('data-uph-idx'), 10);
-        selectedUpholsteryIndex = idx;
-        const targetUph = furniture.images.upholstery[idx];
+      const switchAngle = () => {
+        const idx = parseInt(thumb.getAttribute('data-angle-idx'), 10);
+        currentAngleIndex = idx;
+        const targetAngle = angles[idx];
 
-        // Update active class
         thumbs.forEach(t => t.classList.remove('active'));
         thumb.classList.add('active');
 
-        // Swap main image smoothly
         mainImg.style.opacity = '0.3';
         setTimeout(() => {
-          mainImg.src = targetUph.image;
+          mainImg.src = targetAngle.image;
           mainImg.style.opacity = '1';
         }, 120);
-
-        if (uphNameEl) uphNameEl.textContent = targetUph.name;
       };
 
-      thumb.addEventListener('click', switchUph);
-      thumb.addEventListener('mouseenter', switchUph);
+      thumb.addEventListener('click', switchAngle);
     });
 
     // Wire inquire button
     const inqBtn = card.querySelector('.btn-card-inquire');
-    inqBtn.addEventListener('click', () => {
-      const activeUphItem = furniture.images.upholstery[selectedUpholsteryIndex];
-      window.openContactWithSubject(`Forespørgsel på: ${furniture.name} (${furniture.designer}) - Polstring: ${activeUphItem.name}`);
-    });
+    if (inqBtn) {
+      inqBtn.addEventListener('click', () => {
+        window.openContactWithSubject(`Forespørgsel på: ${furniture.name} (${furniture.designer}) - Pris: ${furniture.price}`);
+      });
+    }
 
     container.appendChild(card);
   });
@@ -404,4 +386,110 @@ function initContactModals() {
       contactForm.reset();
     });
   }
+}
+
+/**
+ * Image Lightbox Modal Implementation
+ */
+let currentLightboxFurniture = null;
+
+function initLightbox() {
+  const modal = document.getElementById('modal-image-lightbox');
+  const closeBtn = document.getElementById('lightbox-close-btn');
+  const inquireBtn = document.getElementById('lightbox-inquire-btn');
+
+  if (closeBtn && modal) {
+    closeBtn.addEventListener('click', closeLightbox);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeLightbox();
+    });
+  }
+
+  if (inquireBtn) {
+    inquireBtn.addEventListener('click', () => {
+      if (!currentLightboxFurniture) return;
+      closeLightbox();
+      window.openContactWithSubject(`Forespørgsel på: ${currentLightboxFurniture.name} (${currentLightboxFurniture.designer}) - Pris: ${currentLightboxFurniture.price}`);
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+      closeLightbox();
+    }
+  });
+}
+
+function openLightbox(furnitureId, initialAngleIndex = 0) {
+  const item = FURNITURE_DATA.find(f => f.id === furnitureId);
+  if (!item) return;
+
+  currentLightboxFurniture = item;
+  const modal = document.getElementById('modal-image-lightbox');
+  const mainImg = document.getElementById('lightbox-img');
+  const title = document.getElementById('lightbox-title');
+  const designer = document.getElementById('lightbox-designer');
+  const price = document.getElementById('lightbox-price');
+  const badge = document.getElementById('lightbox-badge');
+  const desc = document.getElementById('lightbox-desc');
+  const dim = document.getElementById('lightbox-dimensions');
+  const frame = document.getElementById('lightbox-frame');
+  const prov = document.getElementById('lightbox-provenance');
+  const anglesContainer = document.getElementById('lightbox-angle-btns');
+
+  const angles = item.images.angles && item.images.angles.length > 0 
+    ? item.images.angles 
+    : [{ id: 'forfra', name: 'Forfra', image: item.images.main }];
+
+  if (title) title.textContent = item.name;
+  if (designer) designer.textContent = `${item.designer} • ${item.year} (${item.producer})`;
+  if (price) price.textContent = item.price;
+  if (badge) badge.textContent = item.status;
+  if (desc) desc.textContent = item.fullDesc || item.shortDesc;
+  if (dim) dim.textContent = `B: ${item.dimensions.width}, D: ${item.dimensions.depth}, H: ${item.dimensions.height} (Siddehøjde: ${item.dimensions.seatHeight})`;
+  if (frame) frame.textContent = item.frame;
+  if (prov) prov.textContent = item.provenance;
+
+  const initialAngle = angles[initialAngleIndex] || angles[0];
+  if (mainImg) {
+    mainImg.src = initialAngle.image;
+    mainImg.alt = `${item.name} - ${initialAngle.name}`;
+  }
+
+  // Populate angle buttons
+  if (anglesContainer) {
+    anglesContainer.innerHTML = '';
+    angles.forEach((angle, idx) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = `btn-lightbox-angle ${idx === initialAngleIndex ? 'active' : ''}`;
+      btn.textContent = angle.name;
+      btn.addEventListener('click', () => {
+        anglesContainer.querySelectorAll('.btn-lightbox-angle').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        if (mainImg) {
+          mainImg.style.opacity = '0.3';
+          setTimeout(() => {
+            mainImg.src = angle.image;
+            mainImg.style.opacity = '1';
+          }, 120);
+        }
+      });
+      anglesContainer.appendChild(btn);
+    });
+  }
+
+  if (modal) {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeLightbox() {
+  const modal = document.getElementById('modal-image-lightbox');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  currentLightboxFurniture = null;
 }

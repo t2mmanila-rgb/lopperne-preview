@@ -650,9 +650,10 @@ button {
   white-space: nowrap;
 }
 
-.card-360-badge {
-  background-color: var(--color-black);
-  color: var(--color-white);
+.card-zoom-badge {
+  background-color: var(--color-bg-light);
+  color: var(--color-text-main);
+  border: 1px solid var(--color-border);
   font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -664,12 +665,13 @@ button {
   cursor: pointer;
   white-space: nowrap;
   flex-shrink: 0;
-  border: none;
   transition: var(--transition-smooth);
 }
 
-.card-360-badge:hover {
-  background-color: #333333;
+.card-zoom-badge:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-black);
 }
 
 /* Main Image */
@@ -731,8 +733,8 @@ button {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* 3 Upholstery Sub-images */
-.upholstery-sub-thumbnails {
+/* 3 Angle Sub-images */
+.angle-sub-thumbnails {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 6px;
@@ -741,10 +743,10 @@ button {
   box-sizing: border-box;
 }
 
-.sub-thumb-item {
+.angle-thumb-item {
   border: 1px solid var(--color-border);
   background-color: var(--color-white);
-  padding: 5px 4px;
+  padding: 4px;
   cursor: pointer;
   text-align: center;
   transition: var(--transition-smooth);
@@ -752,44 +754,36 @@ button {
   width: 100%;
   box-sizing: border-box;
   overflow: hidden;
+  border-radius: 2px;
 }
 
-.sub-thumb-item:hover, .sub-thumb-item.active {
+.angle-thumb-item:hover, .angle-thumb-item.active {
   border-color: var(--color-black);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-.sub-thumb-item img {
+.angle-thumb-item img {
   width: 100%;
-  height: 50px;
+  height: 52px;
   object-fit: cover;
-  margin-bottom: 4px;
+  margin-bottom: 3px;
   display: block;
 }
 
-.sub-thumb-indicator {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  margin-bottom: 2px;
-}
-
-.sub-thumb-label {
+.angle-thumb-label {
   display: block;
-  font-size: 0.62rem;
+  font-size: 0.64rem;
   font-weight: 600;
   color: var(--color-text-main);
-  white-space: normal;
-  line-height: 1.15;
-  letter-spacing: 0.01em;
-  word-break: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
 }
 
 /* Card Text Details */
 .card-details {
-  padding: 22px 24px;
+  padding: 20px 22px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -826,58 +820,24 @@ button {
 .card-model {
   font-size: 0.8rem;
   color: var(--color-text-muted);
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 
-.card-active-upholstery {
-  background-color: var(--color-bg-light);
-  border: 1px dashed var(--color-border);
-  padding: 6px 10px;
-  font-size: 0.76rem;
+.card-short-desc {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
   margin-bottom: 16px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.card-valuation-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
-  padding: 10px 0;
-  margin-bottom: 18px;
-}
-
-.val-box {
-  display: flex;
-  flex-direction: column;
-}
-
-.val-box .val-label {
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  color: var(--color-text-light);
-  letter-spacing: 0.04em;
-}
-
-.val-box .val-amount {
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--color-black);
-}
-
-.val-box.after .val-amount {
-  color: var(--color-black);
-}
-
-.val-arrow {
-  color: var(--color-text-light);
-  font-size: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .card-pricing {
   margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-border);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -941,10 +901,10 @@ button {
   visibility: visible;
 }
 
-.modal-window-360, .modal-window-vurdering {
+.modal-window-lightbox, .modal-window-vurdering {
   background-color: var(--color-white);
   width: 100%;
-  max-width: 1240px;
+  max-width: 1180px;
   max-height: 92vh;
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-modal);
@@ -1000,122 +960,41 @@ button {
   opacity: 0.6;
 }
 
-.modal-body-split {
+/* Lightbox Modal Layout */
+.lightbox-body {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: 1.2fr 0.9fr;
   flex-grow: 1;
   overflow-y: auto;
 }
 
-/* 360 Studio Left Side */
-.viewer-360-stage {
+.lightbox-stage {
   background: radial-gradient(circle at center, #ffffff 0%, #f4f4f4 100%);
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  border-right: 1px solid var(--color-border);
-  user-select: none;
-}
-
-.stage-instruction-badge {
-  position: absolute;
-  top: 16px;
-  left: 20px;
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid var(--color-border);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  padding: 6px 12px;
-  border-radius: var(--radius-sm);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  z-index: 10;
-}
-
-.canvas-container {
-  width: 100%;
-  height: 520px;
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: grab;
+  padding: 30px;
+  border-right: 1px solid var(--color-border);
+  min-height: 480px;
 }
 
-.canvas-container:active {
-  cursor: grabbing;
+.lightbox-main-img {
+  max-width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+  transition: opacity 0.2s ease;
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.08));
 }
 
-#canvas-360 {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-/* Controls Bar at Bottom of 360 Stage */
-.viewer-controls-bar {
-  background-color: var(--color-white);
-  border-top: 1px solid var(--color-border);
-  padding: 14px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-.btn-ctrl {
-  background-color: var(--color-white);
-  border: 1px solid var(--color-border);
-  padding: 6px 12px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  border-radius: var(--radius-sm);
-}
-
-.btn-ctrl:hover, .btn-ctrl.active {
-  background-color: var(--color-black);
-  border-color: var(--color-black);
-  color: var(--color-white);
-}
-
-.slider-group {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-grow: 1;
-  max-width: 280px;
-}
-
-.slider-group input[type="range"] {
-  flex-grow: 1;
-  accent-color: var(--color-black);
-  cursor: pointer;
-}
-
-.angle-readout {
-  font-size: 0.75rem;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-  width: 34px;
-}
-
-/* Modal Right Side - Furniture Details & Upholstery Selection */
-.modal-info-panel {
+.lightbox-sidebar {
   padding: 32px 36px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
   overflow-y: auto;
 }
 
-.modal-furniture-title {
+.lightbox-title {
   font-family: var(--font-serif);
   font-size: 2.1rem;
   font-weight: 400;
@@ -1124,119 +1003,66 @@ button {
   margin-bottom: 4px;
 }
 
-.modal-furniture-designer {
+.lightbox-designer {
   font-size: 0.88rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--color-text-muted);
+  margin-bottom: 12px;
 }
 
-/* Valuation comparison in modal */
-.modal-valuation-banner {
-  background-color: var(--color-bg-card);
-  border: 1px solid var(--color-border);
-  padding: 16px 20px;
-  border-radius: var(--radius-sm);
-}
-
-.modal-val-grid {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 14px;
-  text-align: center;
-}
-
-.m-val-col span {
-  display: block;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  letter-spacing: 0.05em;
-  margin-bottom: 2px;
-}
-
-.m-val-col strong {
-  font-size: 1.15rem;
+.lightbox-price {
+  font-size: 1.5rem;
+  font-weight: 700;
   color: var(--color-black);
 }
 
-.m-val-col.after strong {
-  color: #106f36;
-}
-
-/* Upholstery Switcher in Modal */
-.modal-uph-section h4 {
+.lightbox-angles-section h4 {
   font-size: 0.82rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
-.uph-options-grid {
+.lightbox-angle-btns {
   display: flex;
-  flex-direction: column;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
-.uph-option-btn {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 14px;
+.btn-lightbox-angle {
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
   border: 1px solid var(--color-border);
+  background: var(--color-white);
+  color: var(--color-text-main);
   border-radius: var(--radius-sm);
-  background-color: var(--color-white);
-  text-align: left;
+  cursor: pointer;
   transition: var(--transition-smooth);
 }
 
-.uph-option-btn:hover, .uph-option-btn.active {
+.btn-lightbox-angle:hover, .btn-lightbox-angle.active {
+  background: var(--color-black);
+  color: var(--color-white);
   border-color: var(--color-black);
-  background-color: var(--color-bg-light);
 }
 
-.uph-swatch {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  flex-shrink: 0;
-}
-
-.uph-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.uph-name {
-  font-size: 0.84rem;
-  font-weight: 700;
-  color: var(--color-black);
-}
-
-.uph-mat {
-  font-size: 0.74rem;
+.lightbox-desc {
+  font-size: 0.9rem;
   color: var(--color-text-muted);
+  line-height: 1.6;
 }
 
-.uph-description-note {
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
-  font-style: italic;
-  margin-top: 8px;
-}
-
-/* Specs Accordion / Table */
-.modal-specs-list {
+.lightbox-specs-list {
   border-top: 1px solid var(--color-border);
   padding-top: 16px;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  font-size: 0.82rem;
+  font-size: 0.84rem;
 }
 
 .spec-row {
@@ -1255,7 +1081,6 @@ button {
   text-align: right;
 }
 
-/* Modal CTAs */
 .modal-cta-group {
   margin-top: auto;
   padding-top: 20px;
@@ -1276,6 +1101,8 @@ button {
   letter-spacing: 0.1em;
   border: 1px solid var(--color-black);
   border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition-smooth);
 }
 
 .btn-modal-primary:hover {
@@ -1294,6 +1121,8 @@ button {
   letter-spacing: 0.08em;
   border: 1px solid var(--color-border-dark);
   border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition-smooth);
 }
 
 .btn-modal-secondary:hover {
@@ -1354,57 +1183,60 @@ button {
   flex-shrink: 0;
 }
 
-/* Dynamic Benchmark Calculator Card */
-.live-benchmark-card {
-  background-color: var(--color-white);
-  border: 1px solid var(--color-black);
-  padding: 24px;
-  margin-top: 30px;
-  border-radius: var(--radius-sm);
+.val-lead-question {
+  font-size: 1.1rem;
+  color: var(--color-black);
+  line-height: 1.5;
+  margin-bottom: 14px;
 }
 
-.benchmark-card-title {
-  font-size: 0.8rem;
+.val-expert-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-black);
+  padding: 20px 24px;
+  margin-top: 28px;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.val-expert-info .expert-label {
+  display: block;
+  font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  margin-bottom: 16px;
-  display: block;
+  color: var(--color-text-muted);
+  margin-bottom: 4px;
 }
 
-.benchmark-display-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-}
-
-.benchmark-box {
-  display: flex;
-  flex-direction: column;
-}
-
-.benchmark-label {
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  color: var(--color-text-light);
-}
-
-.benchmark-val {
-  font-size: 1.18rem;
-  font-weight: 700;
+.val-expert-info h4 {
+  font-size: 1.15rem;
+  margin-bottom: 2px;
   color: var(--color-black);
 }
 
-.benchmark-val.after {
-  color: #106f36;
+.val-expert-info p {
+  font-size: 0.84rem;
+  color: var(--color-text-muted);
+  margin-bottom: 14px;
 }
 
-.benchmark-note {
-  font-size: 0.78rem;
-  color: var(--color-text-muted);
-  border-top: 1px solid var(--color-border);
-  padding-top: 10px;
+.val-expert-contact {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.val-expert-contact a {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-black);
+  text-decoration: none;
+}
+
+.val-expert-contact a:hover {
+  text-decoration: underline;
 }
 
 /* Valuation Interactive Form */
@@ -2618,21 +2450,32 @@ button {
     gap: 8px;
   }
 
-  .val-arrow {
-    transform: rotate(90deg);
-    margin: 4px 0;
+  .lightbox-body {
+    grid-template-columns: 1fr;
   }
 
-  .viewer-controls-bar {
-    flex-wrap: wrap;
-    padding: 10px 14px;
-    gap: 8px;
+  .lightbox-stage {
+    min-height: 260px;
+    padding: 16px;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
   }
 
-  .slider-group {
-    max-width: 100%;
-    order: 3;
-    width: 100%;
+  .lightbox-main-img {
+    max-height: 250px;
+  }
+
+  .lightbox-sidebar {
+    padding: 20px 16px;
+    gap: 14px;
+  }
+
+  .lightbox-title {
+    font-size: 1.5rem;
+  }
+
+  .lightbox-price {
+    font-size: 1.25rem;
   }
 }
 
