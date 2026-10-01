@@ -63,12 +63,14 @@ function renderFurnitureGrid() {
     card.className = 'furniture-card';
     card.setAttribute('data-id', furniture.id);
 
-    const angles = furniture.images.angles && furniture.images.angles.length > 0 
-      ? furniture.images.angles 
-      : [];
+    // All views for this item: Main is the first view, followed by Front, Side, Detail/Back
+    const views = [
+      { id: 'main', name: 'Main', image: furniture.images.main },
+      ...(furniture.images.angles || [])
+    ];
 
-    let currentAngleIndex = -1; // -1 represents the Main image
-    const initialImg = furniture.images.main;
+    let currentViewIndex = 0; // 0 represents the Main image
+    const initialImg = views[0].image;
 
     card.innerHTML = `
       <div class="card-media-wrapper">
@@ -92,6 +94,16 @@ function renderFurnitureGrid() {
                class="furniture-main-img" 
                loading="lazy"
                onerror="this.onerror=null;this.src='${furniture.images.main}'">
+          
+          <!-- Back to Main Button (shown whenever browsing Front, Side, Detail) -->
+          <button type="button" class="btn-return-main hidden" title="Gå tilbage til hovedbilledet">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="9 14 4 9 9 4"></polyline>
+              <path d="M20 20v-7a4 4 0 0 0-4-4H4"></path>
+            </svg>
+            <span>Tilbage til Main</span>
+          </button>
+
           <div class="image-overlay-prompt">
             <span class="view-360-hint">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -103,14 +115,14 @@ function renderFurnitureGrid() {
           </div>
         </div>
 
-        <!-- 3 Distinct Angle Sub-thumbnails below Main -->
+        <!-- 4 Distinct Angle Sub-thumbnails: Main, Front, Side, Detail/Back -->
         <div class="angle-sub-thumbnails" aria-label="Vælg vinkel">
-          ${angles.map((angle, idx) => `
-            <div class="angle-thumb-item" 
-                 data-angle-idx="${idx}"
-                 title="Se ${angle.name}">
-              <img src="${angle.image}" alt="${angle.name}" loading="lazy" onerror="this.onerror=null;this.src='${furniture.images.main}'">
-              <span class="angle-thumb-label">${angle.name}</span>
+          ${views.map((v, idx) => `
+            <div class="angle-thumb-item ${idx === 0 ? 'active' : ''}" 
+                 data-view-idx="${idx}"
+                 title="Se ${v.name}">
+              <img src="${v.image}" alt="${v.name}" loading="lazy" onerror="this.onerror=null;this.src='${furniture.images.main}'">
+              <span class="angle-thumb-label">${v.name}</span>
             </div>
           `).join('')}
         </div>
@@ -142,47 +154,53 @@ function renderFurnitureGrid() {
     const mainImgWrap = card.querySelector('.main-image-container');
     const zoomBadge = card.querySelector('.card-zoom-badge');
     const openItemLightbox = () => {
-      openLightbox(furniture.id, currentAngleIndex);
+      openLightbox(furniture.id, currentViewIndex);
     };
     if (mainImgWrap) mainImgWrap.addEventListener('click', openItemLightbox);
     if (zoomBadge) zoomBadge.addEventListener('click', openItemLightbox);
 
     // Wire angle thumbnails to switch the main image
     const mainImg = card.querySelector('.furniture-main-img');
+    const returnMainBtn = card.querySelector('.btn-return-main');
     const thumbs = card.querySelectorAll('.angle-thumb-item');
 
-    thumbs.forEach(thumb => {
-      const switchAngle = (e) => {
-        e.stopPropagation();
-        const idx = parseInt(thumb.getAttribute('data-angle-idx'), 10);
-        
-        if (thumb.classList.contains('active')) {
-          // Toggle back to Main
-          thumbs.forEach(t => t.classList.remove('active'));
-          currentAngleIndex = -1;
-          mainImg.style.opacity = '0.3';
-          setTimeout(() => {
-            mainImg.src = furniture.images.main;
-            mainImg.style.opacity = '1';
-          }, 120);
-          return;
+    const selectView = (idx) => {
+      currentViewIndex = idx;
+      const targetView = views[idx];
+
+      thumbs.forEach((t, i) => {
+        t.classList.toggle('active', i === idx);
+      });
+
+      if (returnMainBtn) {
+        if (idx === 0) {
+          returnMainBtn.classList.add('hidden');
+        } else {
+          returnMainBtn.classList.remove('hidden');
         }
+      }
 
-        currentAngleIndex = idx;
-        const targetAngle = angles[idx];
+      mainImg.style.opacity = '0.3';
+      setTimeout(() => {
+        mainImg.src = targetView.image;
+        mainImg.style.opacity = '1';
+      }, 120);
+    };
 
-        thumbs.forEach(t => t.classList.remove('active'));
-        thumb.classList.add('active');
-
-        mainImg.style.opacity = '0.3';
-        setTimeout(() => {
-          mainImg.src = targetAngle.image;
-          mainImg.style.opacity = '1';
-        }, 120);
-      };
-
-      thumb.addEventListener('click', switchAngle);
+    thumbs.forEach(thumb => {
+      thumb.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const idx = parseInt(thumb.getAttribute('data-view-idx'), 10);
+        selectView(idx);
+      });
     });
+
+    if (returnMainBtn) {
+      returnMainBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        selectView(0); // Return smoothly to Main
+      });
+    }
 
     // Wire inquire button
     const inqBtn = card.querySelector('.btn-card-inquire');
@@ -457,10 +475,7 @@ function openLightbox(furnitureId, initialAngleIndex = 0) {
     ...(item.images.angles || [])
   ];
 
-  let selectedIdx = 0;
-  if (initialAngleIndex >= 0 && initialAngleIndex < (item.images.angles || []).length) {
-    selectedIdx = initialAngleIndex + 1; // +1 because Main is at index 0
-  }
+  let selectedIdx = (initialAngleIndex >= 0 && initialAngleIndex < allViews.length) ? initialAngleIndex : 0;
 
   if (title) title.textContent = item.name;
   if (designer) designer.textContent = `${item.designer} • ${item.year} (${item.producer})`;

@@ -113,22 +113,22 @@ const FURNITURE_DATA = [
     },
     "provenance": "Originale skandinaviske lænestole. Totalistandsat med ny skumopbygning og bouclé-betræk hos Lopperne.",
     "images": {
-      "main": "Images%20Furnitures/Compact_Mid-Century_Boucle%CC%81_Armchairs%20(Pair)/Main_Compact_Mid-Century_Boucle%CC%81_Armchairs.jpg",
+      "main": "Images%20Furnitures/Compact_Mid-Century_Boucle_Armchairs%20(Pair)/Main_Compact_Mid-Century_Boucle_Armchairs.jpg",
       "angles": [
         {
           "id": "front",
           "name": "Front",
-          "image": "Images%20Furnitures/Compact_Mid-Century_Boucle%CC%81_Armchairs%20(Pair)/Front_Compact_Mid-Century_Boucle%CC%81_Armchairs.jpg"
+          "image": "Images%20Furnitures/Compact_Mid-Century_Boucle_Armchairs%20(Pair)/Front_Compact_Mid-Century_Boucle_Armchairs.jpg"
         },
         {
           "id": "side",
           "name": "Side",
-          "image": "Images%20Furnitures/Compact_Mid-Century_Boucle%CC%81_Armchairs%20(Pair)/Back_Compact_Mid-Century_Boucle%CC%81_Armchairs.jpg"
+          "image": "Images%20Furnitures/Compact_Mid-Century_Boucle_Armchairs%20(Pair)/Back_Compact_Mid-Century_Boucle_Armchairs.jpg"
         },
         {
           "id": "detail-back",
           "name": "Detail/Back",
-          "image": "Images%20Furnitures/Compact_Mid-Century_Boucle%CC%81_Armchairs%20(Pair)/Detail_Compact_Mid-Century_Boucle%CC%81_Armchairs.png"
+          "image": "Images%20Furnitures/Compact_Mid-Century_Boucle_Armchairs%20(Pair)/Detail_Compact_Mid-Century_Boucle_Armchairs.png"
         }
       ]
     }

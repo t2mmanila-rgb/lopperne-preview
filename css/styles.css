@@ -733,14 +733,47 @@ button {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* 3 Angle Sub-images */
+/* 4 Angle Sub-images (Main, Front, Side, Detail/Back) */
 .angle-sub-thumbnails {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 6px;
   margin-top: 14px;
   width: 100%;
   box-sizing: border-box;
+}
+
+/* Floating Return to Main Button on Card Main Image */
+.btn-return-main {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(13, 13, 13, 0.88);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 6px 12px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  border-radius: 20px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s ease;
+}
+
+.btn-return-main:hover {
+  background: #000000;
+  border-color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.btn-return-main.hidden {
+  display: none !important;
 }
 
 .angle-thumb-item {
