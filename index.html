@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="da-DK" dir="ltr">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lopperne – Skandinavisk Design | Møbelklassikere &amp; Opkøb</title>
-  <meta name="description" content="Lopperne – Skandinavisk Design. Vi opkøber, istandsætter og videresælger originale klassiske møbler, malerier, porcelæn og specialevarer. Gratis vurdering af møbler og dødsbo.">
+  <title data-i18n="metaTitle">Lopperne – Scandinavian Design | Furniture Classics &amp; Acquisition</title>
+  <meta name="description" content="Lopperne – Scandinavian Design. We acquire, restore and curate original architect-designed furniture, art, porcelain and special items. Free valuation of furniture and estates.">
   <meta name="author" content="Cleve Milton Spence">
   
   <!-- Favicon -->
@@ -24,15 +24,15 @@
   <aside class="top-bar">
     <div class="container top-bar-inner">
       <div class="top-bar-single-line">
-        <span class="top-bar-item"><strong>Cleve Milton Spence</strong> — Design- &amp; Vurderingsekspert</span>
+        <span class="top-bar-item" data-i18n="topBarExpert"><strong>Cleve Milton Spence</strong> — Design &amp; Valuation Expert</span>
         <span class="top-bar-sep">•</span>
-        <span class="top-bar-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> Udsigten 8, Slotsbjerg, 4200 Slagelse</span>
+        <span class="top-bar-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> <span data-i18n="topBarAddress">Udsigten 8, Slotsbjerg, 4200 Slagelse, Denmark</span></span>
         <span class="top-bar-sep">•</span>
         <a href="tel:+4550312364" class="top-bar-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> +45 50 31 23 64</a>
         <span class="top-bar-sep">•</span>
-        <a href="mailto:blakknr1@hotmail.com" class="top-bar-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> blakknr1@hotmail.com</a>
+        <a href="mailto:contact@lopperne.com" class="top-bar-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> contact@lopperne.com</a>
         <span class="top-bar-sep">•</span>
-        <span class="top-bar-item">Åbningstider: Efter aftale</span>
+        <span class="top-bar-item" data-i18n="topBarHours">Opening Hours: By appointment</span>
       </div>
     </div>
   </aside>
@@ -41,17 +41,22 @@
   <header class="site-header">
     <div class="container header-inner">
       <!-- Logo -->
-      <a href="#" class="site-logo-link" aria-label="Lopperne Skandinavisk Design">
-        <img src="assets/Updated_Logo_Lopperne.png" alt="Lopperne - Skandinavisk Design Logo" class="site-logo-img">
+      <a href="#" class="site-logo-link" aria-label="Lopperne Scandinavian Design">
+        <img src="assets/Updated_Logo_Lopperne.png" alt="Lopperne - Scandinavian Design Logo" class="site-logo-img">
       </a>
 
       <!-- Navigation Menu (Desktop & Mobile Drawer) -->
-      <nav class="main-nav" id="main-nav" aria-label="Hovednavigation">
+      <nav class="main-nav" id="main-nav" aria-label="Main Navigation">
         <div class="mobile-nav-header">
-          <a href="#" class="mobile-nav-logo-link" aria-label="Lopperne Forside">
+          <a href="#" class="mobile-nav-logo-link" aria-label="Lopperne">
             <img src="assets/Updated_Logo_Lopperne.png" alt="Lopperne Logo" class="mobile-drawer-logo">
           </a>
-          <button type="button" class="mobile-nav-close-btn" id="mobile-nav-close" aria-label="Luk menu">
+          <div class="lang-switcher mobile-lang-switcher" aria-label="Language Selector">
+            <button type="button" class="lang-btn active" data-lang="en">EN</button>
+            <span class="lang-divider">|</span>
+            <button type="button" class="lang-btn" data-lang="da">DA</button>
+          </div>
+          <button type="button" class="mobile-nav-close-btn" id="mobile-nav-close" aria-label="Close menu" data-i18n-aria="navCloseMenuAria">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -63,77 +68,83 @@
           <!-- MØBLER DROPDOWN -->
           <li class="nav-item has-dropdown">
             <a href="#moebler-sektion" class="nav-link">
-              <span>Møbler</span> <span class="nav-arrow">&#9662;</span>
+              <span data-i18n="navFurniture">Furniture</span> <span class="nav-arrow">&#9662;</span>
             </a>
             <ul class="dropdown-menu">
-              <li class="dropdown-item"><a href="#moebler-sektion" data-filter-cat="laenestole">Lænestole</a></li>
-              <li class="dropdown-item"><a href="#moebler-sektion" data-filter-cat="sofaer">Sofaer</a></li>
-              <li class="dropdown-item"><a href="#moebler-sektion" data-filter-cat="sofaborde">Sofaborde</a></li>
-              <li class="dropdown-item"><a href="#moebler-sektion" data-filter-cat="stole">Stole</a></li>
-              <li class="dropdown-item"><a href="#moebler-sektion" data-filter-cat="borde">Skriveborde</a></li>
-              <li class="dropdown-item"><a href="#moebler-sektion" data-filter-cat="borde">Spiseborde</a></li>
-              <li class="dropdown-item"><a href="#moebler-sektion" data-filter-cat="opbevaring">Opbevaringsmøbler</a></li>
-              <li class="dropdown-item"><a href="#moebler-sektion" data-filter-cat="lamper">Lamper</a></li>
-              <li class="dropdown-item"><a href="#moebler-sektion" data-filter-cat="painting">Painting</a></li>
-              <li class="dropdown-item"><a href="#moebler-sektion" data-filter-cat="porcelain">Porcelain</a></li>
+              <li class="dropdown-item"><a href="#moebler-sektion" data-filter-cat="laenestole" data-i18n="catArmchairs">Armchairs</a></li>
+              <li class="dropdown-item"><a href="#moebler-sektion" data-filter-cat="sofaer" data-i18n="catSofas">Sofas</a></li>
+              <li class="dropdown-item"><a href="#moebler-sektion" data-filter-cat="sofaborde" data-i18n="catCoffeeTables">Coffee Tables</a></li>
+              <li class="dropdown-item"><a href="#moebler-sektion" data-filter-cat="stole" data-i18n="catChairs">Chairs</a></li>
+              <li class="dropdown-item"><a href="#moebler-sektion" data-filter-cat="borde" data-i18n="catDesks">Desks</a></li>
+              <li class="dropdown-item"><a href="#moebler-sektion" data-filter-cat="borde" data-i18n="catDiningTables">Dining Tables</a></li>
+              <li class="dropdown-item"><a href="#moebler-sektion" data-filter-cat="opbevaring" data-i18n="catStorage">Storage &amp; Sideboards</a></li>
+              <li class="dropdown-item"><a href="#moebler-sektion" data-filter-cat="lamper" data-i18n="catLamps">Lamps</a></li>
+              <li class="dropdown-item"><a href="#moebler-sektion" data-filter-cat="painting" data-i18n="catPainting">Painting</a></li>
+              <li class="dropdown-item"><a href="#moebler-sektion" data-filter-cat="porcelain" data-i18n="catPorcelain">Porcelain</a></li>
               <li class="dropdown-divider"></li>
-              <li class="dropdown-item"><a href="#moebler-sektion" data-filter-cat="all"><strong>Se Alle Møbler</strong></a></li>
+              <li class="dropdown-item"><a href="#moebler-sektion" data-filter-cat="all"><strong data-i18n="catViewAll">View All Furniture</strong></a></li>
             </ul>
           </li>
 
-          <!-- SPECIALEVARER (replaces Designer in nav) -->
+          <!-- SPECIALEVARER -->
           <li class="nav-item">
             <a href="#moebler-sektion" class="nav-link" data-filter-cat="specialevarer">
-              <span>Specialevarer</span>
+              <span data-i18n="navSpecialItems">Special Items</span>
             </a>
           </li>
 
-          <!-- OPKØB DROPDOWN (sub items: Dødsbo, Konkursbo) -->
+          <!-- OPKØB DROPDOWN -->
           <li class="nav-item has-dropdown">
             <a href="#opkoeb" class="nav-link">
-              <span>Opkøb</span> <span class="nav-arrow">&#9662;</span>
+              <span data-i18n="navAcquisition">Acquisition</span> <span class="nav-arrow">&#9662;</span>
             </a>
             <ul class="dropdown-menu">
-              <li class="dropdown-item"><a href="#doedsbo">Dødsbo (Købes &amp; Total Oprydning)</a></li>
-              <li class="dropdown-item"><a href="#konkursbo">Konkursbo &amp; Erhvervspartier</a></li>
-              <li class="dropdown-item"><a href="#gratis-vurdering" class="btn-open-vurdering-modal">Vurdering af Møbler</a></li>
+              <li class="dropdown-item"><a href="#doedsbo" data-i18n="navEstate">Estate Clearance (Purchase &amp; Total Clear-Out)</a></li>
+              <li class="dropdown-item"><a href="#konkursbo" data-i18n="navBankruptcy">Corporate Estates &amp; Liquidation</a></li>
+              <li class="dropdown-item"><a href="#gratis-vurdering" class="btn-open-vurdering-modal" data-i18n="navValuationLink">Furniture Valuation</a></li>
             </ul>
           </li>
 
           <li class="nav-item">
-            <a href="#showroom" class="nav-link"><span>Showroom</span></a>
+            <a href="#showroom" class="nav-link"><span data-i18n="navShowroom">Showroom</span></a>
           </li>
 
           <li class="nav-item">
-            <a href="#om-os" class="nav-link"><span>Om Os</span></a>
+            <a href="#om-os" class="nav-link"><span data-i18n="navAbout">About Us</span></a>
           </li>
 
           <li class="nav-item">
-            <a href="#kontakt" class="nav-link"><span>Kontakt</span></a>
+            <a href="#kontakt" class="nav-link"><span data-i18n="navContact">Contact</span></a>
           </li>
         </ul>
 
         <div class="mobile-nav-footer">
-          <a href="#gratis-vurdering" class="btn-mobile-nav-cta btn-open-vurdering-modal">
-            Få Gratis Vurdering
+          <a href="#gratis-vurdering" class="btn-mobile-nav-cta btn-open-vurdering-modal" data-i18n="navFreeValuationCTA">
+            Free Valuation
           </a>
           <div class="mobile-nav-contact-info">
             <p><strong>Lopperne</strong> — Cleve Milton Spence</p>
-            <p>Tlf: <a href="tel:+4550312364">+45 50 31 23 64</a></p>
-            <p>Email: <a href="mailto:blakknr1@hotmail.com">blakknr1@hotmail.com</a></p>
+            <p>Phone: <a href="tel:+4550312364">+45 50 31 23 64</a></p>
+            <p>Email: <a href="mailto:contact@lopperne.com">contact@lopperne.com</a></p>
             <p>Showroom: Udsigten 8, Slotsbjerg, 4200 Slagelse</p>
-            <p>Åbningstider: Efter aftale</p>
+            <p data-i18n="topBarHours">Opening Hours: By appointment</p>
           </div>
         </div>
       </nav>
 
       <!-- Action Button & Mobile Toggle -->
       <div class="header-actions">
-        <a href="#gratis-vurdering" class="btn-cta-vurdering btn-open-vurdering-modal" title="Få gratis vurdering af designmøbler">
+        <!-- Language Switcher -->
+        <div class="lang-switcher" aria-label="Language Selector">
+          <button type="button" class="lang-btn active" data-lang="en">EN</button>
+          <span class="lang-divider">|</span>
+          <button type="button" class="lang-btn" data-lang="da">DA</button>
+        </div>
+        <a href="#gratis-vurdering" class="btn-cta-vurdering btn-open-vurdering-modal" title="Get free valuation of design furniture" data-i18n-title="navFreeValuationCTA">
           <span class="cta-pulse-dot"></span>
-          Gratis Vurdering
+          <span data-i18n="navFreeValuationCTA">Free Valuation</span>
         </a>
-        <button class="nav-toggle-btn" id="nav-toggle" aria-label="Åbn menu">
+        <button class="nav-toggle-btn" id="nav-toggle" aria-label="Open menu" data-i18n-aria="navOpenMenuAria">
           <span></span>
           <span></span>
           <span></span>
@@ -145,24 +156,24 @@
   <!-- HERO SECTION -->
   <section class="hero-section">
     <div class="container">
-      <h1 class="hero-title">
-        Skandinavisk Design &amp; Møbelklassikere
+      <h1 class="hero-title" data-i18n="heroTitle">
+        Scandinavian Design &amp; Furniture Classics
       </h1>
-      <p class="hero-subtitle">
-        Lopperne er specialiseret i opkøb, nænsom restaurering og videresalg af originale arkitekttegnede møbler, kunst og vintage fund til private og erhverv.
+      <p class="hero-subtitle" data-i18n="heroSubtitle">
+        Lopperne specializes in acquiring, meticulously restoring, and curating original architect-designed furniture, fine art, and vintage collectibles for private homes and professionals.
       </p>
       
       <div class="hero-subhead-flow">
-        <span>Vi opkøber</span> <span>›</span>
-        <span>renser</span> <span>›</span>
-        <span>istandsætter</span> <span>›</span>
-        <span>plejer</span> <span>›</span>
-        <span>videresælger</span>
+        <span data-i18n="heroFlow1">We acquire</span> <span>›</span>
+        <span data-i18n="heroFlow2">clean</span> <span>›</span>
+        <span data-i18n="heroFlow3">restore</span> <span>›</span>
+        <span data-i18n="heroFlow4">condition</span> <span>›</span>
+        <span data-i18n="heroFlow5">resell</span>
       </div>
 
       <div class="hero-cta-group">
-        <a href="#moebler-sektion" class="btn-hero-primary">Se Kollektionen</a>
-        <a href="#gratis-vurdering" class="btn-hero-secondary">Få Gratis Vurdering</a>
+        <a href="#moebler-sektion" class="btn-hero-primary" data-i18n="heroBtnCollection">Explore Collection</a>
+        <a href="#gratis-vurdering" class="btn-hero-secondary" data-i18n="heroBtnValuation">Get Free Valuation</a>
       </div>
     </div>
   </section>
@@ -174,29 +185,29 @@
         <div class="trust-item">
           <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           <div class="trust-content">
-            <h4>100% Ægte Skandinavisk Design</h4>
-            <p>Verificeret originalitet af alle møbler, kunst og arkitekter.</p>
+            <h4 data-i18n="trust1Title">100% Authentic Scandinavian Design</h4>
+            <p data-i18n="trust1Desc">Verified authenticity across all furniture, art, and architect pieces.</p>
           </div>
         </div>
         <div class="trust-item">
           <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
           <div class="trust-content">
-            <h4>Eget Værksted &amp; Restaurering</h4>
-            <p>Nænsom istandsættelse af klassikere med anilinlæder og uldtekstiler.</p>
+            <h4 data-i18n="trust2Title">In-House Workshop &amp; Restoration</h4>
+            <p data-i18n="trust2Desc">Delicate restoration of classics using anilined leathers and pure wools.</p>
           </div>
         </div>
         <div class="trust-item">
           <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
           <div class="trust-content">
-            <h4>Landsdækkende Service</h4>
-            <p>Gratis afhentning ved opkøb samt sikker levering i hele DK.</p>
+            <h4 data-i18n="trust3Title">Nationwide Service</h4>
+            <p data-i18n="trust3Desc">Free on-site inspection for acquisitions and secure delivery across Denmark.</p>
           </div>
         </div>
         <div class="trust-item">
           <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
           <div class="trust-content">
-            <h4>Hurtig &amp; Gratis Vurdering</h4>
-            <p>Vurderingsekspert Cleve Milton Spence svarer inden for 24 timer.</p>
+            <h4 data-i18n="trust4Title">Prompt &amp; Free Valuation</h4>
+            <p data-i18n="trust4Desc">Valuation expert Cleve Milton Spence responds within 24 hours.</p>
           </div>
         </div>
       </div>
@@ -207,30 +218,30 @@
   <section class="catalog-section" id="moebler-sektion">
     <div class="container">
       <div class="section-header">
-        <span class="section-label">Håndplukkede Klassikere</span>
-        <h2 class="section-title">Udstilling af Skandinaviske Møbelklassikere</h2>
-        <p class="section-lead">
-          Hvert emne præsenteres med vinkler forfra, fra siden og detalje/bagfra. Klik på et billede for at åbne det i fuld størrelse.
+        <span class="section-label" data-i18n="catalogSectionLabel">Handpicked Classics</span>
+        <h2 class="section-title" data-i18n="catalogTitle">Exhibition of Scandinavian Furniture Classics</h2>
+        <p class="section-lead" data-i18n="catalogLead">
+          Each piece is presented with front, side, and detail/back views. Click any image to view in full screen.
         </p>
       </div>
 
       <!-- Filter Toolbar -->
       <div class="filter-toolbar">
         <div class="filter-categories">
-          <button type="button" class="cat-pill active" data-cat="all">Alle</button>
-          <button type="button" class="cat-pill" data-cat="laenestole">Lænestole</button>
-          <button type="button" class="cat-pill" data-cat="sofaer">Sofaer</button>
-          <button type="button" class="cat-pill" data-cat="stole">Stole</button>
-          <button type="button" class="cat-pill" data-cat="sofaborde">Borde</button>
-          <button type="button" class="cat-pill" data-cat="opbevaring">Opbevaring</button>
-          <button type="button" class="cat-pill" data-cat="painting">Painting</button>
-          <button type="button" class="cat-pill" data-cat="porcelain">Porcelain</button>
-          <button type="button" class="cat-pill" data-cat="specialevarer">Specialevarer</button>
+          <button type="button" class="cat-pill active" data-cat="all" data-i18n="filterAll">All</button>
+          <button type="button" class="cat-pill" data-cat="laenestole" data-i18n="filterArmchairs">Armchairs</button>
+          <button type="button" class="cat-pill" data-cat="sofaer" data-i18n="filterSofas">Sofas</button>
+          <button type="button" class="cat-pill" data-cat="stole" data-i18n="filterChairs">Chairs</button>
+          <button type="button" class="cat-pill" data-cat="sofaborde" data-i18n="filterTables">Tables</button>
+          <button type="button" class="cat-pill" data-cat="opbevaring" data-i18n="filterStorage">Storage</button>
+          <button type="button" class="cat-pill" data-cat="painting" data-i18n="filterPainting">Painting</button>
+          <button type="button" class="cat-pill" data-cat="porcelain" data-i18n="filterPorcelain">Porcelain</button>
+          <button type="button" class="cat-pill" data-cat="specialevarer" data-i18n="filterSpecial">Special Items</button>
         </div>
 
         <div class="filter-secondary-group">
-          <select id="filter-designer" class="filter-select" aria-label="Vælg designer">
-            <option value="all">Alle Designere</option>
+          <select id="filter-designer" class="filter-select" aria-label="Select designer">
+            <option value="all" data-i18n="filterAllDesigners">All Designers</option>
             <option value="skandinavisk-design">Skandinavisk Design</option>
             <option value="arne-jacobsen">Arne Jacobsen</option>
             <option value="hans-j-wegner">Hans J. Wegner</option>
@@ -244,7 +255,7 @@
 
           <div class="search-input-wrap">
             <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            <input type="text" id="catalog-search-input" class="search-input" placeholder="Søg møbel...">
+            <input type="text" id="catalog-search-input" class="search-input" placeholder="Search furniture..." data-i18n-placeholder="searchPlaceholder">
           </div>
 
           <span id="catalog-count" class="catalog-count-badge"></span>
@@ -262,44 +273,44 @@
   <section class="opkoeb-section" id="opkoeb">
     <div class="container">
       <div class="section-header">
-        <span class="section-label">Total Løsning &amp; Diskretion</span>
-        <h2 class="section-title">Opkøb af Møbler, Dødsbo &amp; Konkursbo</h2>
-        <p class="section-lead">
-          Cleve Milton Spence har årtiers ekspertise i vurdering og afvikling af dødsboer, restpartier og arkitekttegnede inventarer.
+        <span class="section-label" data-i18n="acqSectionLabel">Complete Solution &amp; Discretion</span>
+        <h2 class="section-title" data-i18n="acqTitle">Acquisition of Furniture, Estates &amp; Liquidations</h2>
+        <p class="section-lead" data-i18n="acqLead">
+          Cleve Milton Spence offers decades of expertise in appraising and liquidating estate clearances, commercial lots, and architect-designed collections.
         </p>
       </div>
 
       <div class="opkoeb-grid">
         <!-- Dødsbo Card -->
         <article class="opkoeb-card" id="doedsbo">
-          <span class="opkoeb-tag">Dødsbo Købes ● Total Oprydning</span>
-          <h3 class="opkoeb-title">Totalafvikling af Dødsboer</h3>
-          <p class="opkoeb-desc">
-            At stå med et dødsbo kan være en uoverskuelig opgave. Hos Lopperne tilbyder vi en komplet, respektfuld og professionel helhedsløsning, hvor vi både opkøber de værdifulde designmøbler og sørger for fejebakke-klar rydning af hele boligen.
+          <span class="opkoeb-tag" data-i18n="estateTag">Estate Clearance ● Complete Clear-Out</span>
+          <h3 class="opkoeb-title" data-i18n="estateTitle">Complete Liquidation of Deceased Estates</h3>
+          <p class="opkoeb-desc" data-i18n="estateDesc">
+            Handling an estate can be an overwhelming task. At Lopperne, we provide a complete, respectful, and professional end-to-end solution: we acquire valuable designer furniture and ensure the entire residence is left broom-clean.
           </p>
           <ul class="opkoeb-points">
-            <li>Gratis og uforpligtende besigtigelse i hele Danmark</li>
-            <li>Kontant og gennemskuelig afregning for møbler og kunst</li>
-            <li>Total oprydning, tømning og fejebakke-klar aflevering</li>
-            <li>Hurtig reaktion og stor empati i en svær tid</li>
+            <li data-i18n="estatePoint1">Free and non-binding on-site evaluation across Denmark</li>
+            <li data-i18n="estatePoint2">Immediate and transparent payment for furniture and art</li>
+            <li data-i18n="estatePoint3">Complete clearing, emptying, and broom-clean handover</li>
+            <li data-i18n="estatePoint4">Rapid response and deep empathy during difficult times</li>
           </ul>
-          <a href="#gratis-vurdering" class="opkoeb-action-btn">Bestil Vurdering af Dødsbo</a>
+          <a href="#gratis-vurdering" class="opkoeb-action-btn" data-i18n="estateBtn">Request Estate Valuation</a>
         </article>
 
         <!-- Konkursbo Card -->
         <article class="opkoeb-card" id="konkursbo">
-          <span class="opkoeb-tag">Erhverv ● Partier ● Inventar</span>
-          <h3 class="opkoeb-title">Opkøb af Konkursbo &amp; Kontordomiciler</h3>
-          <p class="opkoeb-desc">
-            Skal en virksomhed flytte, lukke eller afhænde større partier af møde- og loungemøbler? Vi opkøber større mængder af arkitekttegnede stole (f.eks. Syverstole, Y-stole, Eames kontorstole) samt borde og belysning med hurtig afhentning.
+          <span class="opkoeb-tag" data-i18n="commercialTag">Corporate ● Wholesale Lots ● Inventories</span>
+          <h3 class="opkoeb-title" data-i18n="commercialTitle">Corporate Liquidations &amp; Office Inventories</h3>
+          <p class="opkoeb-desc" data-i18n="commercialDesc">
+            Is your company relocating, downsizing, or liquidating larger inventories of meeting and lounge furniture? We purchase volume architect-designed chairs (e.g. Series 7, Wishbone, Eames office chairs), tables, and lighting with rapid pickup.
           </p>
           <ul class="opkoeb-points">
-            <li>Opkøb af partier fra 10 til 500+ enheder</li>
-            <li>Professionel demontering og transport</li>
-            <li>Faktura med CVR: 29882444 og omgående bankoverførsel</li>
-            <li>Bæredygtig cirkulær genanvendelse af klassisk formgivning</li>
+            <li data-i18n="commercialPoint1">Acquisitions from 10 to 500+ units</li>
+            <li data-i18n="commercialPoint2">Professional dismantling and transport</li>
+            <li data-i18n="commercialPoint3">Official invoice with CVR: 29882444 and instant wire transfer</li>
+            <li data-i18n="commercialPoint4">Sustainable circular preservation of design heritage</li>
           </ul>
-          <a href="tel:+4550312364" class="opkoeb-action-btn">Kontakt Cleve Direkte</a>
+          <a href="tel:+4550312364" class="opkoeb-action-btn" data-i18n="commercialBtn">Contact Cleve Directly</a>
         </article>
       </div>
     </div>
@@ -309,10 +320,10 @@
   <section class="designers-strip-section" id="designere-sektion">
     <div class="container">
       <div class="section-header">
-        <span class="section-label">Mestrene Bag Formerne</span>
-        <h2 class="section-title">Danmarks Store Møbelarkitekter</h2>
-        <p class="section-lead">
-          Udforsk historien og møblerne fra de toneangivende designere, der definerede skandinavisk modernisme over hele verden.
+        <span class="section-label" data-i18n="designersLabel">Masters Behind the Forms</span>
+        <h2 class="section-title" data-i18n="designersTitle">Denmark’s Great Furniture Architects</h2>
+        <p class="section-lead" data-i18n="designersLead">
+          Discover the heritage and iconic creations from the pioneering architects who defined Scandinavian modernism worldwide.
         </p>
       </div>
 
@@ -361,36 +372,36 @@
     <div class="container">
       <div class="showroom-split">
         <div class="showroom-details-card">
-          <span class="section-label">Besøg Vores Showroom</span>
-          <h2 class="section-title">Lopperne Showroom &amp; Værksted</h2>
-          <p class="section-lead" style="margin-bottom: 24px;">
-            Kontakt os for aftale og oplev vores udvalgte klassikere, mærk de forskellige læder- og uld kvaliteter i virkeligheden, eller tag dit eget møbel med til et personligt vurderingstjek.
+          <span class="section-label" data-i18n="showroomLabel">Visit Our Showroom</span>
+          <h2 class="section-title" data-i18n="showroomTitle">Lopperne Showroom &amp; Workshop</h2>
+          <p class="section-lead" style="margin-bottom: 24px;" data-i18n="showroomLead">
+            Contact us for an appointment to experience our curated classics in person, feel the leather and wool textures, or bring your own piece for a personal valuation.
           </p>
 
           <div class="showroom-info-block">
-            <h4>Adresse</h4>
-            <p>Udsigten 8, Slotsbjerg, 4200 Slagelse</p>
+            <h4 data-i18n="showroomAddressTitle">Address</h4>
+            <p data-i18n="showroomAddressText">Udsigten 8, Slotsbjerg, 4200 Slagelse, Denmark</p>
           </div>
 
           <div class="showroom-info-block">
-            <h4>Åbningstider</h4>
-            <p><strong>Efter aftale</strong></p>
-            <p style="margin-top: 6px; font-weight: 600; color: var(--color-black);">
-              Vi åbner vores Showroom fast den 1. weekend om måneden
+            <h4 data-i18n="showroomHoursTitle">Opening Hours</h4>
+            <p><strong data-i18n="showroomHoursText">By appointment</strong></p>
+            <p style="margin-top: 6px; font-weight: 600; color: var(--color-black);" data-i18n="showroomWeekendNote">
+              Our Showroom is regularly open the 1st weekend of every month
             </p>
           </div>
 
           <div class="showroom-info-block">
-            <h4>Kontakt</h4>
-            <p>Telefon: <a href="tel:+4550312364"><strong>+45 50 31 23 64</strong></a><br>Email: <a href="mailto:blakknr1@hotmail.com"><strong>blakknr1@hotmail.com</strong></a><br>CVR: 29882444</p>
+            <h4 data-i18n="showroomContactTitle">Contact</h4>
+            <p><span data-i18n="showroomPhone">Phone</span>: <a href="tel:+4550312364"><strong>+45 50 31 23 64</strong></a><br><span data-i18n="showroomEmail">Email</span>: <a href="mailto:contact@lopperne.com"><strong>contact@lopperne.com</strong></a><br><span data-i18n="showroomCVR">CVR</span>: 29882444</p>
           </div>
 
           <div style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap;">
-            <a href="https://maps.google.com/?q=Udsigten+8+Slotsbjerg+4200+Slagelse" target="_blank" rel="noopener" class="btn-hero-primary" style="padding: 10px 20px; font-size: 0.8rem;">
-              Find Vej på Google Maps &rarr;
+            <a href="https://maps.google.com/?q=Udsigten+8+Slotsbjerg+4200+Slagelse" target="_blank" rel="noopener" class="btn-hero-primary" style="padding: 10px 20px; font-size: 0.8rem;" data-i18n="showroomMapsBtn">
+              Get Directions on Google Maps &rarr;
             </a>
-            <a href="tel:+4550312364" class="btn-hero-secondary" style="padding: 10px 20px; font-size: 0.8rem;">
-              Ring for Aftale
+            <a href="tel:+4550312364" class="btn-hero-secondary" style="padding: 10px 20px; font-size: 0.8rem;" data-i18n="showroomCallBtn">
+              Call for Appointment
             </a>
           </div>
         </div>
@@ -407,24 +418,24 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-text">
-          <span class="section-label">Vores Filosofi</span>
-          <h2>Historien Bag Lopperne</h2>
-          <p>
-            Hos <strong>Lopperne – Skandinavisk Design</strong> arbejder vi ud fra en brændende passion for den stolte skandinaviske formgivningstradition. Vores mission er at modvirke nutidens brug-og-smid-væk kultur ved at give brugte arkitekttegnede møbler et nyt og værdifuldt liv gennem omhyggelig restaurering, nænsom rensning og respekt for det originale håndværk.
+          <span class="section-label" data-i18n="aboutLabel">Our Philosophy</span>
+          <h2 data-i18n="aboutTitle">The Story Behind Lopperne</h2>
+          <p data-i18n="aboutP1">
+            At <strong>Lopperne – Scandinavian Design</strong>, we are driven by a deep passion for the proud Scandinavian design heritage. Our mission is to counteract today’s throwaway culture by breathing new, lasting life into pre-owned architect-designed furniture through meticulous restoration, gentle care, and profound respect for authentic craftsmanship.
           </p>
-          <p>
-            En stol fra Wegner, Arne Jacobsen eller Børge Mogensen er ikke bare en brugsgenstand — det er en skulptur, en investering og et stykke kulturarv, der fortjener at gå i arv i generationer.
+          <p data-i18n="aboutP2">
+            A chair by Wegner, Arne Jacobsen, or Børge Mogensen is not merely a utility object — it is a sculpture, an investment, and a cultural heirloom built to be cherished across generations.
           </p>
           
           <div class="expert-signature-box">
             <div class="expert-name">Cleve Milton Spence</div>
-            <div class="expert-title">Design- &amp; Vurderingsekspert • Lopperne Skandinavisk Design</div>
+            <div class="expert-title" data-i18n="aboutExpertTitle">Design &amp; Valuation Expert • Lopperne Scandinavian Design</div>
           </div>
         </div>
 
         <div class="about-visual">
           <div class="about-card-wrap">
-            <img src="assets/business_card_cleve.png" alt="Cleve Milton Spence - Design- &amp; Vurderingsekspert Visitkort" class="about-business-card-img">
+            <img src="assets/business_card_cleve.png" alt="Cleve Milton Spence - Design &amp; Valuation Expert Business Card" class="about-business-card-img">
           </div>
         </div>
       </div>
@@ -436,12 +447,12 @@
     <div class="modal-window-lightbox">
       <div class="modal-header-bar">
         <div class="modal-brand-header">
-          <span class="modal-tag" id="lightbox-badge">Klassiker</span>
-          <span id="lightbox-brand-label" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;">
-            Lopperne Galleri
+          <span class="modal-tag" id="lightbox-badge" data-i18n="lightboxClassicTag">Classic</span>
+          <span id="lightbox-brand-label" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;" data-i18n="lightboxGalleryLabel">
+            Lopperne Gallery
           </span>
         </div>
-        <button type="button" class="modal-close-btn" id="lightbox-close-btn" aria-label="Luk modal">&times;</button>
+        <button type="button" class="modal-close-btn" id="lightbox-close-btn" aria-label="Close modal" data-i18n-aria="lightboxCloseAria">&times;</button>
       </div>
 
       <div class="lightbox-body">
@@ -451,13 +462,13 @@
 
         <div class="lightbox-sidebar">
           <div>
-            <h2 class="lightbox-title" id="lightbox-title">Møbelnavn</h2>
-            <div class="lightbox-designer" id="lightbox-designer">Designer &amp; Årgang</div>
+            <h2 class="lightbox-title" id="lightbox-title">Piece Title</h2>
+            <div class="lightbox-designer" id="lightbox-designer">Designer &amp; Vintage</div>
             <div class="lightbox-price" id="lightbox-price">0 kr.</div>
           </div>
 
           <div class="lightbox-angles-section">
-            <h4>Vælg Vinkel</h4>
+            <h4 data-i18n="lightboxSelectAngle">Select View</h4>
             <div class="lightbox-angle-btns" id="lightbox-angle-btns">
               <!-- Dynamically populated -->
             </div>
@@ -467,25 +478,25 @@
 
           <div class="lightbox-specs-list">
             <div class="spec-row">
-              <span class="spec-label">Dimensioner:</span>
+              <span class="spec-label" data-i18n="lightboxDimLabel">Dimensions:</span>
               <span class="spec-value" id="lightbox-dimensions">-</span>
             </div>
             <div class="spec-row">
-              <span class="spec-label">Materiale / Stel:</span>
+              <span class="spec-label" data-i18n="lightboxFrameLabel">Material / Frame:</span>
               <span class="spec-value" id="lightbox-frame">-</span>
             </div>
             <div class="spec-row">
-              <span class="spec-label">Herkomst &amp; Stand:</span>
+              <span class="spec-label" data-i18n="lightboxProvLabel">Provenance &amp; Condition:</span>
               <span class="spec-value" id="lightbox-provenance">-</span>
             </div>
           </div>
 
           <div class="modal-cta-group" style="margin-top: auto; padding-top: 16px;">
-            <button type="button" class="btn-modal-primary" id="lightbox-inquire-btn">
-              Forespørgsel / Reserver
+            <button type="button" class="btn-modal-primary" id="lightbox-inquire-btn" data-i18n="lightboxInquireBtn">
+              Inquire / Reserve
             </button>
-            <button type="button" class="btn-modal-secondary btn-open-vurdering-modal">
-              Få Gratis Vurdering
+            <button type="button" class="btn-modal-secondary btn-open-vurdering-modal" data-i18n="lightboxValuationBtn">
+              Get Free Valuation
             </button>
           </div>
         </div>
@@ -498,51 +509,51 @@
     <div class="modal-window-vurdering">
       <div class="modal-header-bar">
         <div class="modal-brand-header">
-          <span class="modal-tag">Gratis &amp; Uforpligtende</span>
-          <span style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;">
-            Vurdering af Skandinavisk Design &amp; Dødsbo
+          <span class="modal-tag" data-i18n="valModalTag">Free &amp; Non-Binding</span>
+          <span style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;" data-i18n="valModalHeaderSub">
+            Valuation of Scandinavian Design &amp; Estates
           </span>
         </div>
-        <button type="button" class="modal-close-btn" id="modal-val-close-btn" aria-label="Luk vurderingsvindue">&times;</button>
+        <button type="button" class="modal-close-btn" id="modal-val-close-btn" aria-label="Close valuation modal" data-i18n-aria="valModalCloseAria">&times;</button>
       </div>
 
       <div class="modal-val-body">
         <div class="val-split-layout">
           <!-- Left Column: Expert Presentation & Value Prop -->
           <div class="val-narrative">
-            <span class="section-label">Få Svar På Værdien</span>
-            <h2 id="modal-val-title">Vurdering af Møbler &amp; Dødsbo</h2>
+            <span class="section-label" data-i18n="valNarrativeLabel">Discover the Value</span>
+            <h2 id="modal-val-title" data-i18n="valModalTitle">Valuation of Furniture &amp; Estates</h2>
             <p class="val-lead-question">
-              <strong>Har du arvet en designklassiker, overvejer du at sælge, eller vil du vide hvad dit møbel er værd?</strong>
+              <strong data-i18n="valLeadQuestion">Have you inherited a design classic, considering selling, or want to know what your furniture is worth?</strong>
             </p>
-            <p>
-              Vi vurderer og giver favorable priser. Vores design- og vurderingsekspert <strong>Cleve Milton Spence</strong> rådgiver dig med årtiers erfaring i klassisk skandinavisk møbelkunst, malerier og samleobjekter.
+            <p data-i18n="valNarrativeP">
+              We appraise items and offer competitive acquisition prices. Our design and valuation expert <strong>Cleve Milton Spence</strong> provides decades of expertise in classic Scandinavian furniture art, paintings, and collectibles.
             </p>
 
             <ul class="val-features-list">
               <li class="val-feature-item">
                 <svg class="val-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span><strong>Hurtigt svar og favorable priser:</strong> Vi vurderer ud fra aktuel markedsefterspørgsel og samlerværdi.</span>
+                <span><strong data-i18n="valFeat1Title">Fast reply and favorable prices:</strong><span data-i18n="valFeat1Text"> We assess value based on current collector demand and market trends.</span></span>
               </li>
               <li class="val-feature-item">
                 <svg class="val-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span><strong>Kontant opkøb &amp; afhentning:</strong> Omgående bankoverførsel og fleksibel afhentning i hele Danmark.</span>
+                <span><strong data-i18n="valFeat2Title">Immediate payment &amp; pickup:</strong><span data-i18n="valFeat2Text"> Instant wire transfer and flexible nationwide collection across Denmark.</span></span>
               </li>
               <li class="val-feature-item">
                 <svg class="val-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span><strong>Totalafvikling af dødsbo &amp; restpartier:</strong> Respektfuld og grundig oprydning med fejebakke-klar aflevering.</span>
+                <span><strong data-i18n="valFeat3Title">Complete estate clearance:</strong><span data-i18n="valFeat3Text"> Respectful, thorough clean-out and broom-clean handover.</span></span>
               </li>
             </ul>
 
             <!-- Expert Contact Card -->
             <div class="val-expert-card">
               <div class="val-expert-info">
-                <span class="expert-label">Personlig rådgivning</span>
+                <span class="expert-label" data-i18n="valExpertCardLabel">Personal Advisory</span>
                 <h4>Cleve Milton Spence</h4>
-                <p>Design- &amp; Vurderingsekspert</p>
+                <p data-i18n="valExpertCardSub">Design &amp; Valuation Expert</p>
                 <div class="val-expert-contact">
                   <a href="tel:+4550312364">📞 +45 50 31 23 64</a>
-                  <a href="mailto:blakknr1@hotmail.com">✉️ blakknr1@hotmail.com</a>
+                  <a href="mailto:contact@lopperne.com">✉️ contact@lopperne.com</a>
                 </div>
               </div>
             </div>
@@ -550,21 +561,21 @@
 
           <!-- Right Column: Interactive Upload & Valuation Form -->
           <div class="valuation-form-card">
-            <h3 class="val-form-title">Indsend Billeder &amp; Få Vurdering</h3>
-            <p class="val-form-sub">Upload billeder fra mobil eller computer. Vi svarer inden for 24 timer.</p>
+            <h3 class="val-form-title" data-i18n="valFormTitle">Submit Photos &amp; Get Valuation</h3>
+            <p class="val-form-sub" data-i18n="valFormSub">Upload photos from your mobile phone or computer. We reply within 24 hours.</p>
 
             <form id="valuation-form">
               <!-- Drag and Drop Image Uploader -->
               <div class="form-group">
-                <label>Upload Billeder Af Dit Møbel / Genstand</label>
+                <label data-i18n="valDropLabel">Upload Photos Of Your Furniture / Item</label>
                 <div class="dropzone-container" id="val-dropzone">
                   <svg class="dropzone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                     <polyline points="17 8 12 3 7 8"></polyline>
                     <line x1="12" y1="3" x2="12" y2="15"></line>
                   </svg>
-                  <div class="dropzone-text"><strong>Træk og slip billeder her</strong> eller klik for at vælge</div>
-                  <div class="dropzone-hint">JPG, PNG, WEBP (Op til 10 MB per billede)</div>
+                  <div class="dropzone-text" data-i18n="valDropMain"><strong>Drag and drop photos here</strong> or click to choose</div>
+                  <div class="dropzone-hint" data-i18n="valDropHint">JPG, PNG, WEBP (Up to 10 MB per image)</div>
                 </div>
                 <input type="file" id="val-file-input" multiple accept="image/*" style="display: none;">
                 <div class="image-previews-grid" id="val-image-previews"></div>
@@ -573,53 +584,53 @@
               <!-- Form Fields -->
               <div class="form-row-2">
                 <div class="form-group">
-                  <label for="vurdering-kategori">Kategori</label>
+                  <label for="vurdering-kategori" data-i18n="valCategoryLabel">Category</label>
                   <select id="vurdering-kategori" class="form-select">
-                    <option value="laenestole">Lænestol</option>
-                    <option value="sofaer">Sofa</option>
-                    <option value="stole">Stole / Spisestole</option>
-                    <option value="sofaborde">Borde</option>
-                    <option value="opbevaring">Skænk / Reol</option>
-                    <option value="painting">Painting / Maleri</option>
-                    <option value="porcelain">Porcelain / Porcelæn</option>
-                    <option value="specialevarer">Specialevarer / Belysning</option>
-                    <option value="doedsbo">Dødsbo / Samlet parti</option>
+                    <option value="laenestole" data-i18n="valCatOptArmchair">Armchair</option>
+                    <option value="sofaer" data-i18n="valCatOptSofa">Sofa</option>
+                    <option value="stole" data-i18n="valCatOptChairs">Chairs / Dining Chairs</option>
+                    <option value="sofaborde" data-i18n="valCatOptTables">Tables</option>
+                    <option value="opbevaring" data-i18n="valCatOptStorage">Sideboard / Shelving</option>
+                    <option value="painting" data-i18n="valCatOptPainting">Painting / Fine Art</option>
+                    <option value="porcelain" data-i18n="valCatOptPorcelain">Porcelain / Ceramics</option>
+                    <option value="specialevarer" data-i18n="valCatOptSpecial">Special Items / Lighting</option>
+                    <option value="doedsbo" data-i18n="valCatOptEstate">Estate / Entire Lot</option>
                   </select>
                 </div>
 
                 <div class="form-group">
-                  <label for="vurdering-aersag">Formål med henvendelse</label>
+                  <label for="vurdering-aersag" data-i18n="valPurposeLabel">Purpose of Inquiry</label>
                   <select id="vurdering-aersag" class="form-select">
-                    <option value="salg-opkoeb">Ønsker salg / kontant opkøb</option>
-                    <option value="vurdering">Ønsker kun vurdering</option>
-                    <option value="doedsbo-total">Vurdering og rydning af dødsbo</option>
+                    <option value="salg-opkoeb" data-i18n="valPurposeOptSale">Interested in direct sale / cash buyout</option>
+                    <option value="vurdering" data-i18n="valPurposeOptVal">Valuation only</option>
+                    <option value="doedsbo-total" data-i18n="valPurposeOptEstate">Valuation and total estate clearance</option>
                   </select>
                 </div>
               </div>
 
               <div class="form-row-2">
                 <div class="form-group">
-                  <label for="val-name">Dit Navn *</label>
-                  <input type="text" id="val-name" class="form-input" required placeholder="F.eks. Thomas Nielsen">
+                  <label for="val-name" data-i18n="valNameLabel">Your Name *</label>
+                  <input type="text" id="val-name" class="form-input" required placeholder="e.g. Thomas Nielsen" data-i18n-placeholder="valNamePlaceholder">
                 </div>
                 <div class="form-group">
-                  <label for="val-phone">Telefonnummer *</label>
-                  <input type="tel" id="val-phone" class="form-input" required placeholder="+45 12 34 56 78">
+                  <label for="val-phone" data-i18n="valPhoneLabel">Phone Number *</label>
+                  <input type="tel" id="val-phone" class="form-input" required placeholder="+45 12 34 56 78" data-i18n-placeholder="valPhonePlaceholder">
                 </div>
               </div>
 
               <div class="form-group">
-                <label for="val-email">E-mailadresse *</label>
-                <input type="email" id="val-email" class="form-input" required placeholder="din-email@adresse.dk">
+                <label for="val-email" data-i18n="valEmailLabel">Email Address *</label>
+                <input type="email" id="val-email" class="form-input" required placeholder="your-email@address.com" data-i18n-placeholder="valEmailPlaceholder">
               </div>
 
               <div class="form-group">
-                <label for="val-notes">Beskrivelse / Oplysninger om genstanden eller boet</label>
-                <textarea id="val-notes" class="form-textarea" rows="3" placeholder="Fortæl gerne om arkitekt/mærke, eventuelle stempler, stand, eller om der er tale om et helt dødsbo..."></textarea>
+                <label for="val-notes" data-i18n="valNotesLabel">Description / Details about item or estate</label>
+                <textarea id="val-notes" class="form-textarea" rows="3" placeholder="Feel free to include architect/brand, stamps, condition, or if this involves an entire estate..." data-i18n-placeholder="valNotesPlaceholder"></textarea>
               </div>
 
-              <button type="submit" class="btn-submit-valuation">
-                Indsend til Gratis Vurdering &rarr;
+              <button type="submit" class="btn-submit-valuation" data-i18n="valSubmitBtn">
+                Submit for Free Valuation &rarr;
               </button>
             </form>
           </div>
@@ -632,28 +643,28 @@
   <div class="modal-backdrop" id="contact-modal" role="dialog" aria-modal="true">
     <div class="val-confirm-dialog" style="max-width: 500px;">
       <button type="button" class="modal-close" id="contact-modal-close" style="position: absolute; top: 16px; right: 16px; font-size: 1.6rem; cursor: pointer;">&times;</button>
-      <h3 style="font-family: var(--font-serif); font-size: 1.7rem; margin-bottom: 8px;">Forespørgsel til Cleve</h3>
-      <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 20px;">
-        Udfyld formularen, så vender vi hurtigt tilbage med oplysninger om stand, reservation og levering.
+      <h3 style="font-family: var(--font-serif); font-size: 1.7rem; margin-bottom: 8px;" data-i18n="contactModalTitle">Inquiry to Cleve</h3>
+      <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 20px;" data-i18n="contactModalLead">
+        Fill out the form below and we will get back to you promptly with details on condition, reservation, and delivery.
       </p>
       <form id="modal-contact-form">
         <div class="form-group">
-          <label>Emne</label>
+          <label data-i18n="contactSubjectLabel">Subject</label>
           <input type="text" id="contact-subject" class="form-input" readonly>
         </div>
         <div class="form-group">
-          <label>Dit Navn *</label>
-          <input type="text" class="form-input" required placeholder="Dit fulde navn">
+          <label data-i18n="contactNameLabel">Your Name *</label>
+          <input type="text" class="form-input" required placeholder="Your full name" data-i18n-placeholder="contactNamePlaceholder">
         </div>
         <div class="form-group">
-          <label>Telefon *</label>
-          <input type="tel" class="form-input" required placeholder="+45 12 34 56 78">
+          <label data-i18n="contactPhoneLabel">Phone *</label>
+          <input type="tel" class="form-input" required placeholder="+45 12 34 56 78" data-i18n-placeholder="contactPhonePlaceholder">
         </div>
         <div class="form-group">
-          <label>Email *</label>
-          <input type="email" class="form-input" required placeholder="din-email@adresse.dk">
+          <label data-i18n="contactEmailLabel">Email *</label>
+          <input type="email" class="form-input" required placeholder="your-email@address.com" data-i18n-placeholder="contactEmailPlaceholder">
         </div>
-        <button type="submit" class="btn-primary-dark" style="width: 100%; margin-top: 10px;">Send Forespørgsel</button>
+        <button type="submit" class="btn-primary-dark" style="width: 100%; margin-top: 10px;" data-i18n="contactSubmitBtn">Send Inquiry</button>
       </form>
     </div>
   </div>
@@ -664,42 +675,42 @@
       <div class="footer-top-grid">
         <!-- Col 1: Brand & Contact Info -->
         <div class="footer-brand-col">
-          <img src="assets/Updated_Logo_Lopperne_White.png" alt="Lopperne - Skandinavisk Design" class="footer-logo-img">
-          <p class="footer-brand-desc">
-            Lopperne – Skandinavisk Design er din fortrolige partner i opkøb, restaurering og salg af klassiske arkitekttegnede ikoner, malerier og samlerobjekter.
+          <img src="assets/Updated_Logo_Lopperne_White.png" alt="Lopperne - Scandinavian Design" class="footer-logo-img">
+          <p class="footer-brand-desc" data-i18n="footerBrandDesc">
+            Lopperne – Scandinavian Design is your trusted partner for the acquisition, restoration, and sale of classic architect-designed icons, fine art, and collectibles.
           </p>
           <ul class="footer-contact-list">
-            <li><strong>Cleve Milton Spence</strong> — Design- &amp; Vurderingsekspert</li>
-            <li>Udsigten 8, Slotsbjerg, 4200 Slagelse</li>
-            <li>Telefon: <a href="tel:+4550312364">+45 50 31 23 64</a></li>
-            <li>Email: <a href="mailto:blakknr1@hotmail.com">blakknr1@hotmail.com</a></li>
-            <li>CVR nr: 29882444</li>
-            <li>Dødsbo købes ● Total oprydning</li>
+            <li><strong data-i18n="topBarExpert">Cleve Milton Spence</strong> — Design &amp; Valuation Expert</li>
+            <li>Udsigten 8, Slotsbjerg, 4200 Slagelse, Denmark</li>
+            <li>Phone: <a href="tel:+4550312364">+45 50 31 23 64</a></li>
+            <li>Email: <a href="mailto:contact@lopperne.com">contact@lopperne.com</a></li>
+            <li>CVR no: 29882444</li>
+            <li data-i18n="footerEstateNotice">Deceased estates purchased ● Total clearance</li>
           </ul>
         </div>
 
         <!-- Col 2: All Møbler items (LINKED) -->
         <div class="footer-col">
-          <h4>Kollektion</h4>
+          <h4 data-i18n="footerColCollection">Collection</h4>
           <ul class="footer-links-list">
-            <li><a href="#moebler-sektion" data-filter-cat="laenestole">Lænestole</a></li>
-            <li><a href="#moebler-sektion" data-filter-cat="sofaer">Sofaer</a></li>
-            <li><a href="#moebler-sektion" data-filter-cat="sofaborde">Sofaborde</a></li>
-            <li><a href="#moebler-sektion" data-filter-cat="stole">Stole</a></li>
-            <li><a href="#moebler-sektion" data-filter-cat="borde">Skriveborde</a></li>
-            <li><a href="#moebler-sektion" data-filter-cat="borde">Spiseborde</a></li>
-            <li><a href="#moebler-sektion" data-filter-cat="opbevaring">Opbevaringsmøbler</a></li>
-            <li><a href="#moebler-sektion" data-filter-cat="lamper">Lamper</a></li>
-            <li><a href="#moebler-sektion" data-filter-cat="painting">Painting</a></li>
-            <li><a href="#moebler-sektion" data-filter-cat="porcelain">Porcelain</a></li>
-            <li><a href="#moebler-sektion" data-filter-cat="specialevarer">Specialevarer</a></li>
-            <li><a href="#moebler-sektion" data-filter-cat="all">Alle Varer</a></li>
+            <li><a href="#moebler-sektion" data-filter-cat="laenestole" data-i18n="catArmchairs">Armchairs</a></li>
+            <li><a href="#moebler-sektion" data-filter-cat="sofaer" data-i18n="catSofas">Sofas</a></li>
+            <li><a href="#moebler-sektion" data-filter-cat="sofaborde" data-i18n="catCoffeeTables">Coffee Tables</a></li>
+            <li><a href="#moebler-sektion" data-filter-cat="stole" data-i18n="catChairs">Chairs</a></li>
+            <li><a href="#moebler-sektion" data-filter-cat="borde" data-i18n="catDesks">Desks</a></li>
+            <li><a href="#moebler-sektion" data-filter-cat="borde" data-i18n="catDiningTables">Dining Tables</a></li>
+            <li><a href="#moebler-sektion" data-filter-cat="opbevaring" data-i18n="catStorage">Storage &amp; Sideboards</a></li>
+            <li><a href="#moebler-sektion" data-filter-cat="lamper" data-i18n="catLamps">Lamps</a></li>
+            <li><a href="#moebler-sektion" data-filter-cat="painting" data-i18n="catPainting">Painting</a></li>
+            <li><a href="#moebler-sektion" data-filter-cat="porcelain" data-i18n="catPorcelain">Porcelain</a></li>
+            <li><a href="#moebler-sektion" data-filter-cat="specialevarer" data-i18n="navSpecialItems">Special Items</a></li>
+            <li><a href="#moebler-sektion" data-filter-cat="all" data-i18n="footerAllItemsLink">All Items</a></li>
           </ul>
         </div>
 
         <!-- Col 3: All Designer names (LINKED) -->
         <div class="footer-col">
-          <h4>Designere</h4>
+          <h4 data-i18n="footerColDesigners">Designers</h4>
           <ul class="footer-links-list footer-links-grid-2">
             <li><a href="#moebler-sektion" data-filter-designer="arne-jacobsen">Arne Jacobsen</a></li>
             <li><a href="#moebler-sektion" data-filter-designer="bruno-mathsson">Bruno Mathsson</a></li>
@@ -718,33 +729,34 @@
 
         <!-- Col 4: Services, Opkøb & Info -->
         <div class="footer-col">
-          <h4>Opkøb &amp; Services</h4>
+          <h4 data-i18n="footerColServices">Acquisition &amp; Services</h4>
           <ul class="footer-links-list">
-            <li><a href="#gratis-vurdering" class="btn-open-vurdering-modal"><strong>Få Gratis Vurdering</strong></a></li>
-            <li><a href="#doedsbo">Dødsbo Købes</a></li>
-            <li><a href="#doedsbo">Total Oprydning</a></li>
-            <li><a href="#konkursbo">Konkursbo &amp; Erhvervspartier</a></li>
-            <li><a href="#showroom">Lopperne Showroom &amp; Værksted</a></li>
-            <li><a href="#om-os">Om Lopperne &amp; Cleve</a></li>
+            <li><a href="#gratis-vurdering" class="btn-open-vurdering-modal"><strong data-i18n="footerFreeValuationLink">Get Free Valuation</strong></a></li>
+            <li><a href="#doedsbo" data-i18n="footerEstateBuyLink">Estates Purchased</a></li>
+            <li><a href="#doedsbo" data-i18n="footerEstateClearLink">Total Clearance</a></li>
+            <li><a href="#konkursbo" data-i18n="footerBankruptcyLink">Commercial Liquidations</a></li>
+            <li><a href="#showroom" data-i18n="footerShowroomLink">Lopperne Showroom &amp; Workshop</a></li>
+            <li><a href="#om-os" data-i18n="footerAboutLink">About Lopperne &amp; Cleve</a></li>
           </ul>
         </div>
       </div>
 
       <!-- Bottom Bar -->
       <div class="footer-bottom-bar">
-        <div>
-          &copy; 2026 Lopperne – Skandinavisk Design. Alle rettigheder forbeholdes. CVR nr: 29882444.
+        <div data-i18n="footerCopyright">
+          &copy; 2026 Lopperne – Scandinavian Design. All rights reserved. CVR no: 29882444.
         </div>
         <div class="footer-bottom-links">
-          <a href="#showroom">Udsigten 8, Slotsbjerg, 4200 Slagelse</a>
+          <a href="#showroom">Udsigten 8, Slotsbjerg, 4200 Slagelse, Denmark</a>
           <a href="tel:+4550312364">+45 50 31 23 64</a>
-          <a href="mailto:blakknr1@hotmail.com">blakknr1@hotmail.com</a>
+          <a href="mailto:contact@lopperne.com">contact@lopperne.com</a>
         </div>
       </div>
     </div>
   </footer>
 
   <!-- Scripts -->
+  <script src="js/translations.js"></script>
   <script src="js/furniture-data.js"></script>
   <script src="js/valuation.js"></script>
   <script src="js/app.js"></script>

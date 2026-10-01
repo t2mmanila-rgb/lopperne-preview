@@ -1,9 +1,10 @@
 /**
  * Lopperne - Skandinavisk Design
- * Main Application Script
+ * Main Application Script with Full Bilingual (EN/DA) Support
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initLanguageSwitcher();
   initCatalog();
   initNavigation();
   initFilters();
@@ -12,9 +13,108 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // State
+let currentLang = (typeof getCurrentLang === 'function') ? getCurrentLang() : 'en';
 let activeCategory = 'all';
 let activeDesigner = 'all';
 let searchQuery = '';
+let currentLightboxFurniture = null;
+let currentLightboxViewIndex = 0;
+
+/**
+ * Initialize Language Switcher (Desktop & Mobile)
+ */
+function initLanguageSwitcher() {
+  currentLang = (typeof getCurrentLang === 'function') ? getCurrentLang() : 'en';
+  
+  // Attach listeners to all language switcher buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetLang = btn.getAttribute('data-lang');
+      if (targetLang && targetLang !== currentLang) {
+        setLanguage(targetLang);
+      }
+    });
+  });
+
+  // Apply initial language state
+  setLanguage(currentLang, false);
+}
+
+/**
+ * Switch Active Language
+ */
+function setLanguage(lang, rerender = true) {
+  if (lang !== 'en' && lang !== 'da') lang = 'en';
+  currentLang = lang;
+  try {
+    localStorage.setItem('lopperne_lang', lang);
+  } catch (e) {
+    // localStorage may be disabled in some environments
+  }
+
+  // Update HTML lang attribute
+  document.documentElement.lang = (lang === 'en' ? 'en' : 'da-DK');
+
+  // Update active button state on all switchers
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+  });
+
+  // Update page title and meta description
+  document.title = t('metaTitle', lang);
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) metaDesc.setAttribute('content', t('metaDesc', lang));
+
+  // Translate all DOM elements with [data-i18n]
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const val = t(key, lang);
+    if (val !== undefined && val !== key) {
+      el.innerHTML = val;
+    }
+  });
+
+  // Translate placeholder attributes with [data-i18n-placeholder]
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    const val = t(key, lang);
+    if (val !== undefined) {
+      el.placeholder = val;
+    }
+  });
+
+  // Translate title attributes with [data-i18n-title]
+  document.querySelectorAll('[data-i18n-title]').forEach(el => {
+    const key = el.getAttribute('data-i18n-title');
+    const val = t(key, lang);
+    if (val !== undefined) {
+      el.title = val;
+    }
+  });
+
+  // Translate aria-label attributes with [data-i18n-aria]
+  document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+    const key = el.getAttribute('data-i18n-aria');
+    const val = t(key, lang);
+    if (val !== undefined) {
+      el.setAttribute('aria-label', val);
+    }
+  });
+
+  // Re-render catalog grid with translated cards
+  if (rerender) {
+    renderFurnitureGrid();
+  }
+
+  // Update open lightbox if currently displayed
+  if (currentLightboxFurniture) {
+    openLightbox(currentLightboxFurniture.id, currentLightboxViewIndex);
+  }
+}
+
+// Expose globally
+window.setLanguage = setLanguage;
 
 /**
  * Initialize Catalog Grid
@@ -30,27 +130,35 @@ function renderFurnitureGrid() {
   const container = document.getElementById('furniture-grid');
   if (!container) return;
 
-  const filtered = FURNITURE_DATA.filter(item => {
-    const matchCategory = activeCategory === 'all' || item.category === activeCategory;
-    const matchDesigner = activeDesigner === 'all' || item.designerKey === activeDesigner;
-    const matchSearch = searchQuery === '' || 
-      item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.designer.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.producer.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.categoryName.toLowerCase().includes(searchQuery.toLowerCase());
+  const query = searchQuery.toLowerCase().trim();
+
+  const filtered = FURNITURE_DATA.filter(rawItem => {
+    const matchCategory = activeCategory === 'all' || rawItem.category === activeCategory;
+    const matchDesigner = activeDesigner === 'all' || rawItem.designerKey === activeDesigner;
+    
+    // Search across both DA and EN data fields
+    const matchSearch = query === '' || 
+      (rawItem.name && rawItem.name.toLowerCase().includes(query)) ||
+      (rawItem.name_en && rawItem.name_en.toLowerCase().includes(query)) ||
+      (rawItem.designer && rawItem.designer.toLowerCase().includes(query)) ||
+      (rawItem.producer && rawItem.producer.toLowerCase().includes(query)) ||
+      (rawItem.categoryName && rawItem.categoryName.toLowerCase().includes(query)) ||
+      (rawItem.categoryName_en && rawItem.categoryName_en.toLowerCase().includes(query));
 
     return matchCategory && matchDesigner && matchSearch;
   });
 
   const countBadge = document.getElementById('catalog-count');
-  if (countBadge) countBadge.textContent = `${filtered.length} varer fundet`;
+  if (countBadge) {
+    countBadge.textContent = `${filtered.length} ${t('itemsFound', currentLang)}`;
+  }
 
   if (filtered.length === 0) {
     container.innerHTML = `
       <div class="empty-catalog-message">
-        <h3>Ingen varer matchede dine søgekriterier</h3>
-        <p>Prøv at nulstille dine filtre eller søge efter en anden designer eller kategori.</p>
-        <button type="button" class="btn-secondary" onclick="resetFilters()">Nulstil filtre</button>
+        <h3>${t('emptyTitle', currentLang)}</h3>
+        <p>${t('emptyLead', currentLang)}</p>
+        <button type="button" class="btn-secondary" onclick="resetFilters()">${t('resetFilters', currentLang)}</button>
       </div>
     `;
     return;
@@ -58,7 +166,11 @@ function renderFurnitureGrid() {
 
   container.innerHTML = '';
 
-  filtered.forEach(furniture => {
+  filtered.forEach(rawItem => {
+    const furniture = (typeof getLocalizedItem === 'function') 
+      ? getLocalizedItem(rawItem, currentLang) 
+      : rawItem;
+
     const card = document.createElement('article');
     card.className = 'furniture-card';
     card.setAttribute('data-id', furniture.id);
@@ -76,19 +188,19 @@ function renderFurnitureGrid() {
       <div class="card-media-wrapper">
         <div class="card-badges-header">
           <span class="card-badge">${furniture.status}</span>
-          <span class="card-zoom-badge" title="Klik på billedet for fuld skærm">
+          <span class="card-zoom-badge" title="${t('cardZoomTitle', currentLang)}">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               <line x1="11" y1="8" x2="11" y2="14"></line>
               <line x1="8" y1="11" x2="14" y2="11"></line>
             </svg>
-            <span>Se Billeder</span>
+            <span>${t('cardViewPhotos', currentLang)}</span>
           </span>
         </div>
 
         <!-- Main Clickable Image -> Opens Lightbox modal -->
-        <div class="main-image-container" title="Klik for at se i stort format">
+        <div class="main-image-container" title="${t('cardZoomTitle', currentLang)}">
           <img src="${initialImg}" 
                alt="${furniture.name} - ${furniture.designer}" 
                class="furniture-main-img" 
@@ -96,12 +208,12 @@ function renderFurnitureGrid() {
                onerror="this.onerror=null;this.src='${furniture.images.main}'">
           
           <!-- Back to Main Button (shown whenever browsing Front, Side, Detail) -->
-          <button type="button" class="btn-return-main hidden" title="Gå tilbage til hovedbilledet">
+          <button type="button" class="btn-return-main hidden" title="${t('cardBackToMainTitle', currentLang)}">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <polyline points="9 14 4 9 9 4"></polyline>
               <path d="M20 20v-7a4 4 0 0 0-4-4H4"></path>
             </svg>
-            <span>Tilbage til Main</span>
+            <span>${t('cardBackToMain', currentLang)}</span>
           </button>
 
           <div class="image-overlay-prompt">
@@ -110,17 +222,17 @@ function renderFurnitureGrid() {
                 <circle cx="11" cy="11" r="8"></circle>
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               </svg>
-              Klik for stort foto
+              ${t('cardClickBig', currentLang)}
             </span>
           </div>
         </div>
 
         <!-- 4 Distinct Angle Sub-thumbnails: Main, Front, Side, Detail/Back -->
-        <div class="angle-sub-thumbnails" aria-label="Vælg vinkel">
+        <div class="angle-sub-thumbnails" aria-label="${t('lightboxSelectAngle', currentLang)}">
           ${views.map((v, idx) => `
             <div class="angle-thumb-item ${idx === 0 ? 'active' : ''}" 
                  data-view-idx="${idx}"
-                 title="Se ${v.name}">
+                 title="${v.name}">
               <img src="${v.image}" alt="${v.name}" loading="lazy" onerror="this.onerror=null;this.src='${furniture.images.main}'">
               <span class="angle-thumb-label">${v.name}</span>
             </div>
@@ -140,11 +252,11 @@ function renderFurnitureGrid() {
 
         <div class="card-pricing">
           <div class="price-wrap">
-            <span class="price-prefix">Pris hos Lopperne</span>
+            <span class="price-prefix">${t('cardPricePrefix', currentLang)}</span>
             <span class="card-price">${furniture.price}</span>
           </div>
-          <button type="button" class="btn-card-inquire" title="Reserver eller forespørg på dette møbel">
-            Forespørgsel
+          <button type="button" class="btn-card-inquire" title="${t('cardInquireTitle', currentLang)}">
+            ${t('cardInquireBtn', currentLang)}
           </button>
         </div>
       </div>
@@ -154,7 +266,7 @@ function renderFurnitureGrid() {
     const mainImgWrap = card.querySelector('.main-image-container');
     const zoomBadge = card.querySelector('.card-zoom-badge');
     const openItemLightbox = () => {
-      openLightbox(furniture.id, currentViewIndex);
+      openLightbox(rawItem.id, currentViewIndex);
     };
     if (mainImgWrap) mainImgWrap.addEventListener('click', openItemLightbox);
     if (zoomBadge) zoomBadge.addEventListener('click', openItemLightbox);
@@ -206,7 +318,10 @@ function renderFurnitureGrid() {
     const inqBtn = card.querySelector('.btn-card-inquire');
     if (inqBtn) {
       inqBtn.addEventListener('click', () => {
-        window.openContactWithSubject(`Forespørgsel på: ${furniture.name} (${furniture.designer}) - Pris: ${furniture.price}`);
+        const subjectText = (currentLang === 'da')
+          ? `Forespørgsel på: ${furniture.name} (${furniture.designer}) - Pris: ${furniture.price}`
+          : `Inquiry on: ${furniture.name} (${furniture.designer}) - Price: ${furniture.price}`;
+        window.openContactWithSubject(subjectText);
       });
     }
 
@@ -264,6 +379,8 @@ function resetFilters() {
   renderFurnitureGrid();
 }
 
+window.resetFilters = resetFilters;
+
 /**
  * Navigation, Dropdowns, and Smooth Page Routing
  */
@@ -310,7 +427,6 @@ function initNavigation() {
         e.stopPropagation();
         const parent = this.closest('.nav-item');
         const isExpanded = parent.classList.contains('mobile-expanded');
-        // Toggle current item
         parent.classList.toggle('mobile-expanded', !isExpanded);
       }
     });
@@ -331,7 +447,7 @@ function initNavigation() {
     });
   });
 
-  // Dropdown Sub-menu direct filter links (e.g. Møbler -> Lænestole, Designer -> Arne Jacobsen)
+  // Dropdown Sub-menu direct filter links
   document.querySelectorAll('[data-filter-cat]').forEach(el => {
     el.addEventListener('click', (e) => {
       e.preventDefault();
@@ -412,7 +528,7 @@ function initContactModals() {
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      alert('Tak for din henvendelse! Cleve Milton Spence kontakter dig hurtigst muligt på telefon eller email.');
+      alert(t('contactAlertThanks', currentLang));
       if (modal) modal.classList.remove('active');
       document.body.style.overflow = '';
       contactForm.reset();
@@ -423,8 +539,6 @@ function initContactModals() {
 /**
  * Image Lightbox Modal Implementation
  */
-let currentLightboxFurniture = null;
-
 function initLightbox() {
   const modal = document.getElementById('modal-image-lightbox');
   const closeBtn = document.getElementById('lightbox-close-btn');
@@ -440,8 +554,15 @@ function initLightbox() {
   if (inquireBtn) {
     inquireBtn.addEventListener('click', () => {
       if (!currentLightboxFurniture) return;
+      const raw = currentLightboxFurniture;
+      const localized = (typeof getLocalizedItem === 'function') 
+        ? getLocalizedItem(raw, currentLang) 
+        : raw;
       closeLightbox();
-      window.openContactWithSubject(`Forespørgsel på: ${currentLightboxFurniture.name} (${currentLightboxFurniture.designer}) - Pris: ${currentLightboxFurniture.price}`);
+      const subjectText = (currentLang === 'da')
+        ? `Forespørgsel på: ${localized.name} (${localized.designer}) - Pris: ${localized.price}`
+        : `Inquiry on: ${localized.name} (${localized.designer}) - Price: ${localized.price}`;
+      window.openContactWithSubject(subjectText);
     });
   }
 
@@ -453,10 +574,16 @@ function initLightbox() {
 }
 
 function openLightbox(furnitureId, initialAngleIndex = 0) {
-  const item = FURNITURE_DATA.find(f => f.id === furnitureId);
-  if (!item) return;
+  const rawItem = FURNITURE_DATA.find(f => f.id === furnitureId);
+  if (!rawItem) return;
 
-  currentLightboxFurniture = item;
+  currentLightboxFurniture = rawItem;
+  currentLightboxViewIndex = initialAngleIndex;
+
+  const item = (typeof getLocalizedItem === 'function') 
+    ? getLocalizedItem(rawItem, currentLang) 
+    : rawItem;
+
   const modal = document.getElementById('modal-image-lightbox');
   const mainImg = document.getElementById('lightbox-img');
   const title = document.getElementById('lightbox-title');
@@ -476,13 +603,16 @@ function openLightbox(furnitureId, initialAngleIndex = 0) {
   ];
 
   let selectedIdx = (initialAngleIndex >= 0 && initialAngleIndex < allViews.length) ? initialAngleIndex : 0;
+  currentLightboxViewIndex = selectedIdx;
 
   if (title) title.textContent = item.name;
   if (designer) designer.textContent = `${item.designer} • ${item.year} (${item.producer})`;
   if (price) price.textContent = item.price;
   if (badge) badge.textContent = item.status;
   if (desc) desc.textContent = item.fullDesc || item.shortDesc;
-  if (dim) dim.textContent = `B: ${item.dimensions.width}, D: ${item.dimensions.depth}, H: ${item.dimensions.height} (Siddehøjde: ${item.dimensions.seatHeight})`;
+  
+  const seatHeightLabel = (currentLang === 'da') ? 'Siddehøjde' : 'Seat Height';
+  if (dim) dim.textContent = `W: ${item.dimensions.width}, D: ${item.dimensions.depth}, H: ${item.dimensions.height} (${seatHeightLabel}: ${item.dimensions.seatHeight})`;
   if (frame) frame.textContent = item.frame;
   if (prov) prov.textContent = item.provenance;
 
@@ -503,6 +633,7 @@ function openLightbox(furnitureId, initialAngleIndex = 0) {
       btn.addEventListener('click', () => {
         anglesContainer.querySelectorAll('.btn-lightbox-angle').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
+        currentLightboxViewIndex = idx;
         if (mainImg) {
           mainImg.style.opacity = '0.3';
           setTimeout(() => {
@@ -529,4 +660,5 @@ function closeLightbox() {
     document.body.style.overflow = '';
   }
   currentLightboxFurniture = null;
+  currentLightboxViewIndex = 0;
 }

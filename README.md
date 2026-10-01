@@ -10,7 +10,7 @@ En komplet, responsiv og luksuriøs webplatform for den danske virksomhed **Lopp
 - **Ekspert & Ejer:** Cleve Milton Spence (Design- & Vurderingsekspert)
 - **Adresse:** Prags Boulevard 65, 2300 København S
 - **Telefon:** +45 50 31 23 64
-- **E-mail:** blakknr1@hotmail.com
+- **E-mail:** contact@lopperne.com
 - **CVR-nr:** 29882444
 - **Specialer:** Dødsbo købes ● Total oprydning ● Salg og nænsom renovering af klassiske danske møbelikoner
 

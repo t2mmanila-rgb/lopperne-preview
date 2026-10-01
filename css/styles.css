@@ -274,11 +274,59 @@ button {
   margin: 6px 0;
 }
 
+/* Language Switcher */
+.lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  background: #f4f4f4;
+  border: 1px solid #dcdcdc;
+  border-radius: 20px;
+  padding: 3px 4px;
+  gap: 2px;
+  user-select: none;
+}
+
+.lang-btn {
+  background: transparent;
+  border: none;
+  color: #666666;
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 4px 9px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.lang-btn:hover {
+  color: #000000;
+}
+
+.lang-btn.active {
+  background: #000000;
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.lang-divider {
+  display: none;
+}
+
+.mobile-lang-switcher {
+  margin-left: auto;
+  margin-right: 12px;
+}
+
 /* Header Action Buttons */
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
 }
 
 .btn-cta-vurdering {

@@ -1,6 +1,6 @@
 /**
  * Lopperne - Skandinavisk Design
- * Gratis Vurdering & Billedupload
+ * Gratis Vurdering & Billedupload / Valuation Tool
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -77,7 +77,8 @@ function initValuationTool() {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       
-      const name = document.getElementById('val-name')?.value || 'Kunde';
+      const lang = typeof getCurrentLang === 'function' ? getCurrentLang() : 'en';
+      const name = document.getElementById('val-name')?.value || (lang === 'da' ? 'Kunde' : 'Client');
       const phone = document.getElementById('val-phone')?.value || '';
       const email = document.getElementById('val-email')?.value || '';
       const category = categorySelect ? categorySelect.options[categorySelect.selectedIndex].text : '';
@@ -150,9 +151,16 @@ function initValuationTool() {
 }
 
 function showSubmissionConfirmation(data) {
+  const lang = typeof getCurrentLang === 'function' ? getCurrentLang() : 'en';
   const modal = document.createElement('div');
   modal.className = 'modal-backdrop active';
   modal.id = 'val-confirm-modal';
+
+  const thanksText = t('valConfirmThanks').replace('{name}', data.name);
+  const photosCountText = data.fileCount > 0 
+    ? t('valConfirmPhotosCount').replace('{count}', data.fileCount) 
+    : t('valConfirmNoPhotos');
+
   modal.innerHTML = `
     <div class="modal-dialog val-confirm-dialog">
       <button type="button" class="modal-close" onclick="document.getElementById('val-confirm-modal').remove()">&times;</button>
@@ -163,20 +171,20 @@ function showSubmissionConfirmation(data) {
             <polyline points="22 4 12 14.01 9 11.01"></polyline>
           </svg>
         </div>
-        <h3>Tak for din henvendelse, ${data.name}!</h3>
-        <p class="val-confirm-lead">Vi har modtaget dine oplysninger og gennemgår henvendelsen.</p>
+        <h3>${thanksText}</h3>
+        <p class="val-confirm-lead">${t('valConfirmLead')}</p>
         <div class="val-summary-box">
-          <p><strong>Kategori:</strong> ${data.category}</p>
-          <p><strong>Formål:</strong> ${data.purpose}</p>
-          <p><strong>Vedhæftede billeder:</strong> ${data.fileCount > 0 ? `${data.fileCount} stk. billeder modtaget` : 'Ingen billeder (du kan også sende via SMS)'}</p>
-          <p><strong>Kontaktperson:</strong> Cleve Milton Spence, Design- & Vurderingsekspert</p>
+          <p><strong>${t('valConfirmCat')}</strong> ${data.category}</p>
+          <p><strong>${t('valConfirmPurpose')}</strong> ${data.purpose}</p>
+          <p><strong>${t('valConfirmPhotos')}</strong> ${photosCountText}</p>
+          <p><strong>${t('valConfirmContact')}</strong> ${t('valConfirmContactVal')}</p>
         </div>
         <p class="val-promise">
-          Cleve gennemgår dine billeder og oplysninger og vender personligt tilbage inden for 24 timer med en uforpligtende vurdering og et favorable opkøbstilbud.
+          ${t('valConfirmPromise')}
         </p>
         <div class="val-urgent-contact">
-          <p>Har du et dødsbo eller akut brug for afklaring?</p>
-          <a href="tel:+4550312364" class="btn-primary-dark">Ring direkte til Cleve på +45 50 31 23 64</a>
+          <p>${t('valConfirmUrgentText')}</p>
+          <a href="tel:+4550312364" class="btn-primary-dark">${t('valConfirmCallBtn')}</a>
         </div>
       </div>
     </div>
