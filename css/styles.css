@@ -2172,12 +2172,12 @@ button {
   /* Accordion Dropdowns */
   .dropdown-menu, .dropdown-menu.mega-menu {
     position: static;
-    opacity: 1;
-    visibility: visible;
+    opacity: 0;
+    visibility: hidden;
     transform: none;
     box-shadow: none;
     border: none;
-    padding: 4px 0 12px 18px;
+    padding: 0;
     min-width: 100%;
     grid-template-columns: 1fr;
     display: none;
@@ -2185,10 +2185,14 @@ button {
     border-left: 3px solid #000000;
     margin: 0;
     list-style: none;
+    transition: none;
   }
 
   .nav-item.mobile-expanded .dropdown-menu {
-    display: block;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    padding: 4px 0 12px 18px !important;
   }
 
   .nav-item.mobile-expanded .nav-arrow {
