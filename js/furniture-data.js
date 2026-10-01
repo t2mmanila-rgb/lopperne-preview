@@ -48,6 +48,221 @@ const FURNITURE_DATA = [
     }
   },
   {
+    "id": "spindle-back-lounge-chairs-pair",
+    "name": "Sortlakerede Tremmestole med Lammeskind & Skamler (Par)",
+    "model": "Spindle-Back Lounge Chairs & Skamler (Par)",
+    "designer": "Dansk Møbelarkitekt",
+    "designerKey": "skandinavisk-design",
+    "category": "laenestole",
+    "categoryName": "Lænestole",
+    "year": "ca. 1950",
+    "producer": "Dansk Snedkerværksted",
+    "frame": "Sortlakeret massivt bøg/birk med tremmeryg, nypolstret med krøllet hvidt lammeskind og matchende skamler",
+    "price": "24.500 kr. (samlet sæt)",
+    "status": "Nypolstret / På lager",
+    "shortDesc": "Eksklusivt par sortlakerede tremmestole nypolstret med ægte lammeskind samt 2 matchende fodskamler.",
+    "fullDesc": "Et sjældent og utrolig smukt samlet sæt bestående af to sortlakerede tremme-lænestole med organiske armlæn og tilhørende buede fodskamler. Stolene og skamlerne er nypolstret med tæt, blødt hvidt lammeskind af højeste kvalitet. Det elegante spil mellem det dybsorte træværk og det lyse lammeskind skaber en markant grafisk og hyggelig kontrast.",
+    "dimensions": {
+      "width": "75 cm",
+      "depth": "82 cm",
+      "height": "88 cm",
+      "seatHeight": "43 cm"
+    },
+    "provenance": "Dansk snedkerklassiker fra 1950'erne. Træværket er efterset og nylakeret, og polstringen er udført på eget værksted hos Lopperne.",
+    "images": {
+      "main": "Images%20Furnitures/Black_Lacquered_Spindle-Back_Lounge_Chairs_with_Sheepskin&Footrests%20(Pair)/Main_Black_Lacquered_Spindle-Back_Lounge_Chairs_with_Sheepskin&Footrests.jpg",
+      "angles": [
+        {
+          "id": "front",
+          "name": "Front",
+          "image": "Images%20Furnitures/Black_Lacquered_Spindle-Back_Lounge_Chairs_with_Sheepskin&Footrests%20(Pair)/Front_Black_Lacquered_Spindle-Back_Lounge_Chairs_with_Sheepskin&Footrests.jpg"
+        },
+        {
+          "id": "side",
+          "name": "Side",
+          "image": "Images%20Furnitures/Black_Lacquered_Spindle-Back_Lounge_Chairs_with_Sheepskin&Footrests%20(Pair)/Back_Black_Lacquered_Spindle-Back_Lounge_Chairs_with_Sheepskin&Footrests.jpg"
+        },
+        {
+          "id": "detail-back",
+          "name": "Detail/Back",
+          "image": "Images%20Furnitures/Black_Lacquered_Spindle-Back_Lounge_Chairs_with_Sheepskin&Footrests%20(Pair)/Detail_Black_Lacquered_Spindle-Back_Lounge_Chairs_with_Sheepskin&Footrests.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": "compact-boucle-armchairs-pair",
+    "name": "Mid-Century Bouclé Lænestole (Par)",
+    "model": "Kompakte Lænestole (Par)",
+    "designer": "Skandinavisk Formgiver",
+    "designerKey": "skandinavisk-design",
+    "category": "laenestole",
+    "categoryName": "Lænestole",
+    "year": "ca. 1950-1960",
+    "producer": "Dansk Møbelproducent",
+    "frame": "Kompakt organisk formspændt ramme med mørkbejdsede massive ben, nypolstret med råhvid bouclé",
+    "price": "21.000 kr. (samlet par)",
+    "status": "Nypolstret / På lager",
+    "shortDesc": "Elegante mid-century lænestole nypolstret med taktil råhvid bouclé og rygknapper.",
+    "fullDesc": "Par af indbydende og kompakte lænestole fra 1950'erne. Stolene har en blød, kurvet ryg med klassisk knapindheftning og let svungne armlæn. Nypolstret med luksuriøst, vamset bouclé-tekstil i en varm råhvid nuance. De tilspidsede mørke træben giver et svævende og harmonisk udtryk. Sælges samlet som par.",
+    "dimensions": {
+      "width": "76 cm",
+      "depth": "78 cm",
+      "height": "82 cm",
+      "seatHeight": "42 cm"
+    },
+    "provenance": "Originale skandinaviske lænestole. Totalistandsat med ny skumopbygning og bouclé-betræk hos Lopperne.",
+    "images": {
+      "main": "Images%20Furnitures/Compact_Mid-Century_Boucle%CC%81_Armchairs%20(Pair)/Main_Compact_Mid-Century_Boucle%CC%81_Armchairs.jpg",
+      "angles": [
+        {
+          "id": "front",
+          "name": "Front",
+          "image": "Images%20Furnitures/Compact_Mid-Century_Boucle%CC%81_Armchairs%20(Pair)/Front_Compact_Mid-Century_Boucle%CC%81_Armchairs.jpg"
+        },
+        {
+          "id": "side",
+          "name": "Side",
+          "image": "Images%20Furnitures/Compact_Mid-Century_Boucle%CC%81_Armchairs%20(Pair)/Back_Compact_Mid-Century_Boucle%CC%81_Armchairs.jpg"
+        },
+        {
+          "id": "detail-back",
+          "name": "Detail/Back",
+          "image": "Images%20Furnitures/Compact_Mid-Century_Boucle%CC%81_Armchairs%20(Pair)/Detail_Compact_Mid-Century_Boucle%CC%81_Armchairs.png"
+        }
+      ]
+    }
+  },
+  {
+    "id": "high-back-sheepskin-leather-chairs",
+    "name": "Højryggede Lænestole i Lammeskind & Læder (Par)",
+    "model": "High-Back Easy Chairs (Par)",
+    "designer": "Dansk Møbelarkitekt",
+    "designerKey": "skandinavisk-design",
+    "category": "laenestole",
+    "categoryName": "Lænestole",
+    "year": "ca. 1950",
+    "producer": "Dansk Snedkermester",
+    "frame": "Massiv trækonstruktion med egetræsben, tykt krøllet lammeskind og kraftige patinerede læderpuder",
+    "price": "28.000 kr. (samlet par)",
+    "status": "Totalistandsat / På lager",
+    "shortDesc": "Storslåede højryggede øreklapstole betrukket med ægte lammeskind og lækre læderpuder.",
+    "fullDesc": "Et exceptionelt par skulpturelle højryggede lænestole. Korpus er polstret med fyldigt, blødt krøllet lammeskind, suppleret med dybe, vendbare sædepuder i patineret mørkebrunt læder for maksimal slidstyrke og karakter. Med massive koniske ben i lys eg og enestående ergonomisk støtte til ryg og nakke. Sælges samlet som par.",
+    "dimensions": {
+      "width": "84 cm",
+      "depth": "86 cm",
+      "height": "95 cm",
+      "seatHeight": "43 cm"
+    },
+    "provenance": "Dansk snedkerarbejde fra midten af det 20. århundrede. Totalistandsat og nypolstret på værkstedet hos Lopperne.",
+    "images": {
+      "main": "Images%20Furnitures/High-Back_Sheepskin&Leather_Easy_Chairs%20(Pair)/Main_High-Back_Sheepskin&Leather_Easy_Chairs.jpg",
+      "angles": [
+        {
+          "id": "front",
+          "name": "Front",
+          "image": "Images%20Furnitures/High-Back_Sheepskin&Leather_Easy_Chairs%20(Pair)/Front_High-Back_Sheepskin&Leather_Easy_Chairs.jpg"
+        },
+        {
+          "id": "side",
+          "name": "Side",
+          "image": "Images%20Furnitures/High-Back_Sheepskin&Leather_Easy_Chairs%20(Pair)/Side_High-Back_Sheepskin&Leather_Easy_Chairs.jpg"
+        },
+        {
+          "id": "detail-back",
+          "name": "Detail/Back",
+          "image": "Images%20Furnitures/High-Back_Sheepskin&Leather_Easy_Chairs%20(Pair)/Back_High-Back_Sheepskin&Leather_Easy_Chairs.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": "scandinavian-corner-dressing-table",
+    "name": "Hjørne-Toiletbord & Spejl i Lys Eg (Sæt)",
+    "model": "Hjørnebord med integreret skuffe, Spejl & Taburet",
+    "designer": "Skandinavisk Snedkermester",
+    "designerKey": "skandinavisk-design",
+    "category": "sofaborde",
+    "categoryName": "Borde",
+    "year": "ca. 1960",
+    "producer": "Nordisk Møbelsnedkeri",
+    "frame": "Massiv lys egetræskonstruktion med fingertappede samlinger, skjult smykkeskuffe, vægspejl og grøn velourtaburet",
+    "price": "16.800 kr. (for hele sættet)",
+    "status": "På lager",
+    "shortDesc": "Raffineret hjørne-toiletbord i lys eg med opklappeligt opbevaringsrum, spejl og taburet.",
+    "fullDesc": "Et komplet og sjældent designersæt bestående af et kurvet hjørnebord med diskret integreret smykkerum/skuffe i bordpladen, et matchende rektangulært vægspejl med egeramme samt en skulpturel taburet betrukket med mosgrøn velour. Udført i massiv, fintslebet lys eg med udsøgte organiske hjørnesamlinger. Perfekt til soveværelset eller entréen.",
+    "dimensions": {
+      "width": "80 cm",
+      "depth": "55 cm",
+      "height": "74 cm (bord) / 85 cm (spejl)",
+      "seatHeight": "45 cm (taburet)"
+    },
+    "provenance": "Nordisk snedkerhåndværk af højeste karat. Træværket er nænsomt renset og behandlet med hvidpigmenteret sæbeolie hos Lopperne.",
+    "images": {
+      "main": "Images%20Furnitures/Scandinavian_Light_Oak_Corner_Dressing_Table_Mirror%20(Set)/Main_Scandinavian_Light_Oak_Corner_Dressing_Table_Mirror.jpg",
+      "angles": [
+        {
+          "id": "front",
+          "name": "Front",
+          "image": "Images%20Furnitures/Scandinavian_Light_Oak_Corner_Dressing_Table_Mirror%20(Set)/Front_Scandinavian_Light_Oak_Corner_Dressing_Table_Mirror.jpg"
+        },
+        {
+          "id": "side",
+          "name": "Side",
+          "image": "Images%20Furnitures/Scandinavian_Light_Oak_Corner_Dressing_Table_Mirror%20(Set)/Detail2_Scandinavian_Light_Oak_Corner_Dressing_Table_Mirror.jpg"
+        },
+        {
+          "id": "detail-back",
+          "name": "Detail/Back",
+          "image": "Images%20Furnitures/Scandinavian_Light_Oak_Corner_Dressing_Table_Mirror%20(Set)/Detail_Scandinavian_Light_Oak_Corner_Dressing_Table_Mirror.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": "vintage-teak-bar-cart",
+    "name": "Vintage Rullebord & Barvogn i Teak & Rød",
+    "model": "To-Etagers Serveringsvogn på Hjul",
+    "designer": "Dansk Design",
+    "designerKey": "skandinavisk-design",
+    "category": "sofaborde",
+    "categoryName": "Borde",
+    "year": "ca. 1960",
+    "producer": "Dansk Møbelfabrikant",
+    "frame": "Massiv teaktræsramme med to etager af kontrastfyldte røde bakkeplader og forkromede drejehjul",
+    "price": "8.500 kr.",
+    "status": "Original stand / På lager",
+    "shortDesc": "Ikonisk to-etagers barvogn og rullebord i massiv teak med røde bakkeplader og hjul.",
+    "fullDesc": "Klassisk dansk rullebord fra 1960'erne udført med stel i varm gylden teaktræ og to vendbare/aftørrelige bakkeplader i livlig rød laminat/formica. Udstyret med originale letløbende forkromede hjul. Ideel som funktionel cocktail- og barvogn, afsætningsbord eller rullende kaffebord i det moderne hjem.",
+    "dimensions": {
+      "width": "68 cm",
+      "depth": "46 cm",
+      "height": "62 cm",
+      "seatHeight": "-"
+    },
+    "provenance": "Original mid-century klassiker. Teaktræet er renset og nænsomt olieret, og hjulene er smurt og poleret hos Lopperne.",
+    "images": {
+      "main": "Images%20Furnitures/Vintage_Red&Teakwood_Two-Tier_Rolling_Tea-Bar_Cart/Main_Vintage_Red&Teakwood_Two-Tier_Rolling_Tea-Bar_Cart.jpg",
+      "angles": [
+        {
+          "id": "front",
+          "name": "Front",
+          "image": "Images%20Furnitures/Vintage_Red&Teakwood_Two-Tier_Rolling_Tea-Bar_Cart/Front_Vintage_Red&Teakwood_Two-Tier_Rolling_Tea-Bar_Cart.jpg"
+        },
+        {
+          "id": "side",
+          "name": "Side",
+          "image": "Images%20Furnitures/Vintage_Red&Teakwood_Two-Tier_Rolling_Tea-Bar_Cart/Side_Vintage_Red&Teakwood_Two-Tier_Rolling_Tea-Bar_Cart.jpg"
+        },
+        {
+          "id": "detail-back",
+          "name": "Detail/Back",
+          "image": "Images%20Furnitures/Vintage_Red&Teakwood_Two-Tier_Rolling_Tea-Bar_Cart/Detail_Vintage_Red&Teakwood_Two-Tier_Rolling_Tea-Bar_Cart.jpg"
+        }
+      ]
+    }
+  },
+  {
     "id": "sheepskin-2-seater-sofa",
     "name": "2-Personers Sofa i Ægte Lammeskind",
     "model": "Kurvet 2-Personers Sofa",
@@ -222,25 +437,25 @@ const FURNITURE_DATA = [
   {
     "id": "floor-lamp-pleated-dusky-pink",
     "name": "Gulvlampe med Plisseret Rosa Skærm",
-    "model": "Vintage Standerlampe",
+    "model": "Vintage Standerlampe i Skandinavisk Design",
     "designer": "Klassisk Belysningsarkitekt",
     "designerKey": "skandinavisk-design",
     "category": "specialevarer",
     "categoryName": "Specialevarer",
     "year": "ca. 1950-1960",
     "producer": "Dansk Lampefabrikant",
-    "frame": "Patineret messing og ædeltræsstamme med håndplisseret skærm i støvet rosa",
+    "frame": "Krum standerarm på rund fod med håndplisseret lampeskærm i støvet rosa",
     "price": "6.800 kr.",
     "status": "Gennemgået el / På lager",
-    "shortDesc": "Elegant vintage gulvlampe med håndfoldet plisseret skærm i afdæmpet rosa.",
-    "fullDesc": "Skøn skandinavisk gulvlampe fra midten af det 20. århundrede. Fremstillet med slank stamme i kombination af træ og messingdetaljer samt en smuk håndplisseret skærm i afdæmpet rosa. Giver et varmt, diffust og stemningsfuldt lys. Ledning og fatning er efterset og monteret med ny afbryder.",
+    "shortDesc": "Elegant skandinavisk gulvlampe med håndfoldet plisseret skærm i en fin støvet rosa nuance.",
+    "fullDesc": "Smuk og skulpturel gulvlampe fra midten af det 20. århundrede. Lampen fremstår med en harmonisk buet stander på en solid rund fod og krones af en udsøgt, håndfoldet plisseret skærm i en varm støvet rosa nuance. Den giver et behageligt og stemningsfuldt lys, perfekt ved siden af lænestolen eller sofaen. El og ledning er efterset og monteret med ny afbryder.",
     "dimensions": {
       "width": "45 cm (skærm)",
-      "depth": "45 cm",
-      "height": "155 cm",
+      "depth": "52 cm",
+      "height": "148 cm",
       "seatHeight": "-"
     },
-    "provenance": "Original mid-century lampe, el-renoveret og nænsomt pudset hos Lopperne.",
+    "provenance": "Original mid-century skandinavisk gulvlampe, el-renoveret og efterset hos Lopperne.",
     "images": {
       "main": "Images%20Furnitures/Floor_Lamp_with_Pleated_Dusky_Pink_Shade/Main_Floor_Lamp_with_Pleated_Dusky_Pink_Shade.jpg",
       "angles": [
@@ -252,7 +467,7 @@ const FURNITURE_DATA = [
         {
           "id": "side",
           "name": "Side",
-          "image": "Images%20Furnitures/Floor_Lamp_with_Pleated_Dusky_Pink_Shade/Closeup_Floor_Lamp_with_Pleated_Dusky_Pink_Shade.jpg"
+          "image": "Images%20Furnitures/Floor_Lamp_with_Pleated_Dusky_Pink_Shade/Side_Floor_Lamp_with_Pleated_Dusky_Pink_Shade.jpg"
         },
         {
           "id": "detail-back",
