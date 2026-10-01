@@ -322,6 +322,10 @@ button {
   margin-right: 12px;
 }
 
+.hero-lang-switcher {
+  display: none;
+}
+
 /* Header Action Buttons */
 .header-actions {
   display: flex;
@@ -1951,6 +1955,16 @@ button {
 }
 
 @media (max-width: 1024px) {
+  .header-actions .lang-switcher {
+    display: none;
+  }
+
+  .hero-lang-switcher {
+    display: inline-flex;
+    margin-bottom: 22px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
   .header-inner {
     height: auto;
     min-height: 115px;
