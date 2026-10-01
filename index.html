@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="css/styles.css?v=1.0.2">
+  <link rel="stylesheet" href="css/styles.css?v=1.0.3">
 </head>
 <body>
 
@@ -67,9 +67,14 @@
         <ul class="nav-list">
           <!-- MØBLER DROPDOWN -->
           <li class="nav-item has-dropdown">
-            <a href="#moebler-sektion" class="nav-link">
-              <span data-i18n="navFurniture">Furniture</span> <span class="nav-arrow">&#9662;</span>
-            </a>
+            <div class="nav-item-header">
+              <a href="#moebler-sektion" class="nav-link">
+                <span data-i18n="navFurniture">Furniture</span>
+              </a>
+              <button type="button" class="nav-arrow-btn" aria-label="Toggle Furniture menu">
+                <span class="nav-arrow">&#9662;</span>
+              </button>
+            </div>
             <ul class="dropdown-menu">
               <li class="dropdown-item"><a href="#moebler-sektion" data-filter-cat="laenestole" data-i18n="catArmchairs">Armchairs</a></li>
               <li class="dropdown-item"><a href="#moebler-sektion" data-filter-cat="sofaer" data-i18n="catSofas">Sofas</a></li>
@@ -95,9 +100,14 @@
 
           <!-- OPKØB DROPDOWN -->
           <li class="nav-item has-dropdown">
-            <a href="#opkoeb" class="nav-link">
-              <span data-i18n="navAcquisition">Acquisition</span> <span class="nav-arrow">&#9662;</span>
-            </a>
+            <div class="nav-item-header">
+              <a href="#opkoeb" class="nav-link">
+                <span data-i18n="navAcquisition">Acquisition</span>
+              </a>
+              <button type="button" class="nav-arrow-btn" aria-label="Toggle Acquisition menu">
+                <span class="nav-arrow">&#9662;</span>
+              </button>
+            </div>
             <ul class="dropdown-menu">
               <li class="dropdown-item"><a href="#doedsbo" data-i18n="navEstate">Estate Clearance (Purchase &amp; Total Clear-Out)</a></li>
               <li class="dropdown-item"><a href="#konkursbo" data-i18n="navBankruptcy">Corporate Estates &amp; Liquidation</a></li>

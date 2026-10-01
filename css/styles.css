@@ -211,6 +211,24 @@ button {
   color: #555555;
 }
 
+.nav-item-header {
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-arrow-btn {
+  background: transparent;
+  border: none;
+  color: inherit;
+  font: inherit;
+  padding: 0;
+  margin-left: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .nav-arrow {
   font-size: 0.65rem;
   transition: transform 0.2s ease;
@@ -2104,6 +2122,13 @@ button {
     border-bottom: 1px solid var(--color-border);
   }
 
+  .nav-item-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
   .nav-link {
     padding: 16px 20px;
     width: 100%;
@@ -2118,8 +2143,29 @@ button {
     text-transform: uppercase;
   }
 
+  .nav-arrow-btn {
+    width: 58px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-left: 1px solid var(--color-border);
+    cursor: pointer;
+    color: #000000;
+    flex-shrink: 0;
+    transition: background-color 0.2s ease;
+  }
+
+  .nav-arrow-btn:active {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+
   .nav-arrow {
-    font-size: 0.85rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1;
     transition: transform 0.25s ease;
   }
 
@@ -2205,6 +2251,7 @@ button {
     font-size: 0.72rem;
     letter-spacing: 0.04em;
     white-space: nowrap;
+    margin-right: 10px;
   }
 
   /* Furniture Grid */
